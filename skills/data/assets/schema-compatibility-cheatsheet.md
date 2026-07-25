@@ -33,7 +33,7 @@ the kind of fact that drifts.
 
 ## Companion evolution conventions (use alongside, not instead of, the mode above)
 
-- **`MODEL-REVISION-ADDITION` (SchemaVer, Snowplow)** — a breaking change bumps `MODEL` (old
+- **`MODEL-REVISION-ADDITION` (SchemaVer, Snowplow; re-verify the literal term against docs.snowplow.io)** — a breaking change bumps `MODEL` (old
   consumers keep working against the old MODEL in parallel); an additive-compatible change bumps
   `REVISION`/`ADDITION` only. Good for human-facing versioning even when the registry mode above
   is the enforced mechanism.

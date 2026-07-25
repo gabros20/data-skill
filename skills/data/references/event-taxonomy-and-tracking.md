@@ -85,7 +85,7 @@ REVISION-ADDITION"}`, e.g. `iglu:com.my_company/viewed_product/jsonschema/1-0-0`
 (docs.snowplow.io/docs/fundamentals/schemas/, 2026-07-25). Naming = reverse-DNS vendor + snake_case
 name; `additionalProperties:false` enforced — a strict contract, not an append-only blob.
 
-**SchemaVer bump rule:**
+**SchemaVer bump rule** (Snowplow's 3-part scheme; re-verify the literal `MODEL-REVISION-ADDITION` vocabulary against docs.snowplow.io — as-of 2026-07-25):
 | Bump | Trigger | Compatibility |
 |---|---|---|
 | MODEL (major) | Field type change, new **required** field, required↔optional flip | Breaking — old consumers keep working only on the old MODEL |

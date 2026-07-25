@@ -41,7 +41,8 @@ after.
 
 ## 3. Schema evolution rule (per event/entity)
 
-Adopt `MODEL-REVISION-ADDITION` versioning (Snowplow SchemaVer, lift verbatim): a **breaking**
+Adopt `MODEL-REVISION-ADDITION` versioning (Snowplow SchemaVer; re-verify the current term
+against docs.snowplow.io before quoting as vendor vocabulary): a **breaking**
 change bumps MODEL (old consumers keep working against the old MODEL); an **additive-compatible**
 change bumps REVISION/ADDITION only. State per event:
 
