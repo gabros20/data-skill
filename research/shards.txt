@@ -1,0 +1,68 @@
+# data-skill discovery shards — GitHub search queries (GraphQL)
+# event taxonomy & tracking plans
+tracking plan analytics events stars:>50
+event taxonomy analytics stars:>30
+analytics events schema tracking stars:>80
+# data contracts
+data contract schema stars:>80
+data contracts yaml governance stars:>30
+# ingestion / movement / ELT / ETL / CDC / streaming
+awesome data engineering stars:>500
+data engineering pipeline framework stars:>800
+ELT ingestion connectors stars:>500
+change data capture CDC stars:>400
+airbyte connector stars:>300
+streaming data kafka flink stars:>800
+debezium cdc connector stars:>200
+# transformation / modeling / dbt
+dbt data transformation stars:>300
+dbt models staging marts stars:>100
+awesome dbt stars:>200
+dimensional modeling data warehouse stars:>100
+sql transformation analytics engineering stars:>150
+# semantic / metrics layer
+semantic layer metrics stars:>200
+metrics layer analytics stars:>100
+cube semantic layer stars:>500
+lookml metrics stars:>50
+# BI / dashboards as code
+dashboards as code BI stars:>200
+business intelligence open source stars:>800
+metabase superset lightdash stars:>1000
+# data quality / testing / lineage / observability
+data quality testing validation stars:>300
+great expectations data quality stars:>400
+data lineage openlineage stars:>200
+data observability monitoring stars:>200
+soda data quality stars:>100
+elementary dbt data quality stars:>100
+# governance / PII / catalog
+data governance catalog stars:>400
+data catalog metadata stars:>500
+PII detection classification stars:>200
+open metadata datahub catalog stars:>1000
+# lakehouse / modern storage
+apache iceberg lakehouse stars:>500
+duckdb analytics stars:>1000
+delta lake lakehouse stars:>500
+# orchestration
+dagster data orchestration stars:>1000
+prefect workflow orchestration stars:>1000
+airflow data pipeline stars:>2000
+# reverse ETL
+reverse etl census hightouch stars:>50
+# product analytics self-hosted
+posthog product analytics stars:>1000
+amplitude analytics self-hosted stars:>50
+# experiment data / measurement
+experimentation ab testing platform stars:>300
+feature flags experimentation stars:>500
+# AI-era data plane — RAG as ETL, embeddings pipeline, LLM trace warehousing
+embedding pipeline vector etl stars:>200
+RAG data pipeline ingestion stars:>500
+LLM observability tracing stars:>500
+vector database ingestion stars:>1000
+data mesh data products stars:>200
+# skill-shaped
+data engineering skill agent SKILL.md stars:>2
+analytics engineering handbook stars:>200

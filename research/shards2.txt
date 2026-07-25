@@ -1,0 +1,27 @@
+# topic-based sharper discovery
+topic:data-engineering stars:>500
+topic:dbt stars:>100
+topic:data-quality stars:>150
+topic:data-lineage stars:>100
+topic:data-catalog stars:>200
+topic:data-governance stars:>100
+topic:etl stars:>500
+topic:elt stars:>200
+topic:cdc stars:>200
+topic:data-pipeline stars:>500
+topic:analytics stars:>1500
+topic:business-intelligence stars:>500
+topic:semantic-layer stars:>30
+topic:metrics-layer stars:>10
+topic:data-observability stars:>50
+topic:lakehouse stars:>200
+topic:data-warehouse stars:>300
+topic:workflow-orchestration stars:>800
+topic:product-analytics stars:>200
+topic:reverse-etl stars:>20
+topic:data-contract stars:>20
+topic:tracking-plan stars:>5
+topic:experimentation stars:>200
+topic:feature-flags stars:>1000
+topic:streaming stars:>2000
+topic:awesome-list data stars:>1000
