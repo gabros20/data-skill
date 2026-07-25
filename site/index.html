@@ -1,5 +1,9 @@
 <!doctype html>
-<!-- skill-site scaffold: shared family chrome; identity = the accent triple PLUS sections, components, and a hero designed for THIS skill. Read site/README.md (the design brief) before editing — filling the TODOs is not a site. Keep the hero-terminal and Start-here shapes. -->
+<!-- data skill · visual guide. Shared family chrome (tokens, type, hero-terminal, footer);
+     identity = amber accent + sections/diagrams/hero designed for THIS skill's faceted router
+     (10 primary jobs × ≤1 base surface, regulated overlay ⭐ additive) — the analytical and governed
+     data plane, peer of frontend/backend/ai. The regulated overlay carries a distinct teal token so
+     it reads apart from the amber spine, mirroring how ai used teal for its multi-agent overlay. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -7,14 +11,14 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f7fa">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#12151d">
 <title>data — Make product and business data trustworthy, governed, usable</title>
-<meta name="description" content="TODO — one to two sentence description of the skill for search engines.">
+<meta name="description" content="A faceted agent skill for the analytical and governed data plane: event tracking, data contracts and schema evolution, ingestion/CDC, transformation and modeling, the metrics/semantic layer and BI, data quality and testing, lineage and observability, governance/PII/retention, experiment measurement, and platform/cost — across product-analytics, warehouse-platform, operational-activation, and AI-data-plane surfaces, plus an additive regulated overlay. Retrieval-first and anti-staleness on every tool/warehouse/license fact; trust is a gate, not a dashboard.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://data-skill.vercel.app/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="data — Make product and business data trustworthy, governed, usable">
-<meta property="og:description" content="TODO — one to two sentence description for social previews.">
+<meta property="og:title" content="data — build the analytical, governed data plane">
+<meta property="og:description" content="A faceted agent skill for tracking, contracts, ingestion, transformation, metrics/BI, quality &amp; testing, lineage, governance, experiments and cost — across product/warehouse/operational/AI surfaces plus an additive regulated overlay. Trust is a gate, not a dashboard.">
 <meta property="og:url" content="https://data-skill.vercel.app/">
 <meta property="og:image" content="https://data-skill.vercel.app/og.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +26,8 @@
 <meta property="og:site_name" content="data">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="data — Make product and business data trustworthy, governed, usable">
-<meta name="twitter:description" content="TODO — one to two sentence description for social previews.">
+<meta name="twitter:title" content="data — build the analytical, governed data plane">
+<meta name="twitter:description" content="Faceted skill for tracking, contracts, ingestion, transformation, metrics/BI, quality &amp; testing, lineage, governance, experiments and cost. Trust is a gate, not a dashboard.">
 <meta name="twitter:image" content="https://data-skill.vercel.app/og.png">
 
 <script type="application/ld+json">
@@ -31,9 +35,9 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "data",
-  "applicationCategory": "DesignApplication",
+  "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Claude Code / agent CLIs",
-  "description": "TODO — one to two sentence description of the skill.",
+  "description": "A faceted agent skill for the analytical and governed data plane of a product — event tracking, data contracts and schema evolution, ingestion/movement, transformation and modeling, metrics/semantic layer and BI, data quality and testing, lineage and observability, governance/PII/retention, experiment measurement, and platform/cost — across product-analytics, warehouse-platform, operational-activation and AI-data-plane surfaces, plus an additive regulated overlay. Retrieval-first / anti-staleness on every tool, price, and license fact; trust is a gate, not a dashboard.",
   "url": "https://data-skill.vercel.app/",
   "offers": {
     "@type": "Offer",
@@ -50,27 +54,36 @@
     --bg:#f6f7fa; --panel:#ffffff; --ink:#1c2333; --muted:#5a6478; --line:#d8dde8;
     --accent:#d97706; --accent-ink:#ffffff; --amber:#a97a10; --amber-bg:#fdf6e3;
     --good:#1e7f4f; --bad:#b3403a; --code-bg:#eef1f7; --glyph:#8391ad;
-    --tok-strat:#d97706; --tok-dim:#8146c9; --tok-val:#1e7f4f; --tok-file:#a97a10;
+    --tok-job:#d97706; --tok-reg:#0e8f9c; --tok-val:#1e7f4f; --tok-file:#a97a10;
+    --reg-bg:rgba(14,143,156,.09);
   }
   @media (prefers-color-scheme: dark){ :root{
     --bg:#12151d; --panel:#1a1f2b; --ink:#e6eaf3; --muted:#93a0b8; --line:#2b3245;
     --accent:#fbbf24; --accent-ink:#0d1220; --amber:#d9a72e; --amber-bg:#26200f;
     --good:#4cc38a; --bad:#e5726c; --code-bg:#141824; --glyph:#5d6a85;
-    --tok-strat:#fbbf24; --tok-dim:#b98aef; --tok-val:#4cc38a; --tok-file:#d9a72e;
+    --tok-job:#fbbf24; --tok-reg:#4fd1de; --tok-val:#4cc38a; --tok-file:#d9a72e;
+    --reg-bg:rgba(79,209,222,.14);
   }}
   :root[data-theme="dark"]{
     --bg:#12151d; --panel:#1a1f2b; --ink:#e6eaf3; --muted:#93a0b8; --line:#2b3245;
     --accent:#fbbf24; --accent-ink:#0d1220; --amber:#d9a72e; --amber-bg:#26200f;
     --good:#4cc38a; --bad:#e5726c; --code-bg:#141824; --glyph:#5d6a85;
-    --tok-strat:#fbbf24; --tok-dim:#b98aef; --tok-val:#4cc38a; --tok-file:#d9a72e;
+    --tok-job:#fbbf24; --tok-reg:#4fd1de; --tok-val:#4cc38a; --tok-file:#d9a72e;
+    --reg-bg:rgba(79,209,222,.14);
   }
   :root[data-theme="light"]{
     --bg:#f6f7fa; --panel:#ffffff; --ink:#1c2333; --muted:#5a6478; --line:#d8dde8;
     --accent:#d97706; --accent-ink:#ffffff; --amber:#a97a10; --amber-bg:#fdf6e3;
     --good:#1e7f4f; --bad:#b3403a; --code-bg:#eef1f7; --glyph:#8391ad;
-    --tok-strat:#d97706; --tok-dim:#8146c9; --tok-val:#1e7f4f; --tok-file:#a97a10;
+    --tok-job:#d97706; --tok-reg:#0e8f9c; --tok-val:#1e7f4f; --tok-file:#a97a10;
+    --reg-bg:rgba(14,143,156,.09);
   }
   *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%; text-size-adjust:100%}
+  html,body{overflow-x:hidden; max-width:100%}
+  /* grid/flex children holding white-space:pre blocks must be allowed to shrink so the block's
+     own overflow-x:auto engages instead of forcing page-level horizontal scroll */
+  .wedgegrid>*,.seam>*,.downstream>*,.seambox,.harnessblock,.artgrid>*,.bandgrid>*,.rgseam>*{min-width:0}
   body{background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; margin:0; -webkit-font-smoothing:antialiased}
   .wrap{max-width:1060px; margin:0 auto; padding:0 24px 96px}
   code,.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
@@ -81,7 +94,7 @@
   h2::after{content:""; flex:1; height:1px; background:var(--line)}
   h2 .lu{color:var(--accent); width:20px; height:20px}
   section{margin-top:64px}
-  .lede{font-size:19px; color:var(--muted); max-width:60ch; margin:0}
+  .lede{font-size:19px; color:var(--muted); max-width:64ch; margin:0}
   .hosts{display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin:16px 0 0}
   .hosts .hl{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.14em; font-weight:600; font-size:11px; color:var(--muted); margin-right:2px}
   .hosts span:not(.hl){font-family:ui-monospace,Menlo,monospace; font-size:11.5px; color:var(--muted); background:var(--code-bg); border-radius:5px; padding:3px 8px; white-space:nowrap}
@@ -93,10 +106,13 @@
   /* lucide icons */
   .lu{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; flex:none; vertical-align:-3px}
 
-  /* top nav */
-  nav{display:flex; flex-wrap:wrap; gap:8px; margin-top:26px}
-  nav a{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; text-decoration:none; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:4px 12px; background:var(--panel)}
-  nav a:hover,nav a:focus-visible{color:var(--accent); border-color:var(--accent); outline:none}
+  /* top nav + section nav */
+  nav.toplinks{display:flex; flex-wrap:wrap; gap:8px; margin-top:26px}
+  nav.toplinks a{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; text-decoration:none; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:4px 12px; background:var(--panel)}
+  nav.toplinks a:hover,nav.toplinks a:focus-visible{color:var(--accent); border-color:var(--accent); outline:none}
+  .secnav{display:flex; flex-wrap:wrap; gap:8px; margin-top:26px}
+  .secnav a{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; text-decoration:none; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:4px 12px; background:var(--panel)}
+  .secnav a:hover,.secnav a:focus-visible{color:var(--accent); border-color:var(--accent); outline:none}
   .secnav a::before{content:"#"; color:var(--glyph); margin-right:5px}
   .secnav a:hover::before,.secnav a:focus-visible::before{color:var(--accent)}
 
@@ -105,80 +121,199 @@
   .term .c{color:var(--muted)}
   .term .p{color:var(--accent); font-weight:600}
 
-  /* the arc — animated explainer: a Remotion video, light/dark, swapped in
-     as progressive enhancement over the static one-line arc fallback below */
-  .vidwrap{display:none; margin-top:20px}
+  /* the hero — Remotion video (light/dark) over the static router fallback */
+  .vidwrap{display:none; margin-top:22px}
   .vidwrap video{display:block; width:100%; aspect-ratio:16/9; border:1px solid var(--line); border-radius:10px; background:var(--bg); box-shadow:0 30px 70px -40px rgba(0,0,0,.45)}
   body.has-vid .vidwrap{display:block}
-  body.has-vid .poster{display:none}
-  .poster{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px; margin-top:20px}
-  .arcline{font-family:ui-monospace,Menlo,monospace; font-size:14.5px; line-height:2; color:var(--muted); margin:0}
-  .arcline b{color:var(--ink); font-weight:600}
-  .arcline .ar{color:var(--glyph); margin:0 2px}
+  body.has-vid .herofallback{display:none}
+
+  /* router fallback / centerpiece — facet composition */
+  .router{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin-top:22px}
+  .gate{display:flex; align-items:center; gap:10px; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--muted); padding:0 0 16px; margin-bottom:16px; border-bottom:1px dashed var(--line)}
+  .gate .lu{width:16px; height:16px; color:var(--accent); flex:none}
+  .gate b{color:var(--ink)}
+  .rlane{display:grid; grid-template-columns:150px 1fr; gap:14px 16px; align-items:center}
+  .rlane + .rlane{margin-top:12px}
+  .rlabel{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.1em; font-weight:600; font-size:12px; color:var(--muted); text-align:right; line-height:1.25}
+  .rlabel small{display:block; font-family:ui-monospace,Menlo,monospace; text-transform:none; letter-spacing:0; font-weight:400; font-size:10.5px; color:var(--glyph)}
+  .chips{display:flex; flex-wrap:wrap; gap:7px}
+  .chip{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; padding:5px 11px; border-radius:8px; white-space:nowrap; color:var(--muted); background:var(--bg); border:1px solid var(--line)}
+  .chip.on{color:var(--accent-ink); background:var(--accent); border-color:var(--accent); font-weight:600}
+  .chip.star{color:var(--accent-ink); background:var(--accent); border-color:var(--accent); font-weight:600}
+  .chip.regon{color:var(--tok-reg); background:var(--reg-bg); border-color:var(--tok-reg); font-weight:600}
+  .chip .st{color:var(--amber); font-weight:700; margin-left:4px}
+  .rdown{display:flex; align-items:center; gap:10px; margin:16px 0 14px; color:var(--glyph)}
+  .rdown::before,.rdown::after{content:""; flex:1; height:1px; background:var(--line)}
+  .rdown span{font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--muted)}
+  .readset{display:flex; flex-wrap:wrap; gap:9px; align-items:center}
+  .readset code{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; padding:6px 12px; border-radius:8px; color:var(--accent); background:var(--code-bg); border:1px solid var(--accent)}
+  .readset code.reg{color:var(--tok-reg); border-color:var(--tok-reg)}
+  .readset .cnt{font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--muted); margin-left:4px}
+  .readset .cnt b{color:var(--ink)}
+  .rrule{margin:16px 0 0; font-size:13.5px; color:var(--muted); display:flex; gap:9px; line-height:1.55}
+  .rrule .lu{color:var(--accent); flex:none; margin-top:1px; width:17px; height:17px}
+  .rrule b{color:var(--ink)}
   .pcap{font-size:13.5px; color:var(--muted); margin:14px 0 0; max-width:68ch}
   .pcap b{color:var(--ink)}
+  @media (max-width:560px){ .rlane{grid-template-columns:1fr; gap:6px} .rlabel{text-align:left} }
 
-  /* numbered stage timeline */
-  .steps{margin-top:20px; counter-reset:step}
-  .steps>div{position:relative; padding:0 0 22px 46px; --sc:var(--accent)}
-  .steps>div::before{counter-increment:step; content:counter(step); position:absolute; left:0; top:-3px; width:28px; height:28px; border-radius:50%; background:var(--panel); border:2px solid var(--sc); color:var(--sc); font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600; display:flex; align-items:center; justify-content:center}
-  .steps>div::after{content:""; position:absolute; left:13px; top:31px; bottom:-6px; width:2px; background:var(--line)}
-  .steps>div:last-child{padding-bottom:0}
-  .steps>div:last-child::after{display:none}
-  .steps b{display:flex; align-items:center; gap:8px; font-family:ui-monospace,Menlo,monospace; font-size:14px; margin:2px 0 4px}
-  .steps b .lu{width:15px; height:15px; color:var(--sc)}
-  .steps span{font-size:13.5px; color:var(--muted); display:block; line-height:1.55; max-width:66ch}
-  .steps span b{display:inline; font-family:inherit; font-size:inherit; color:var(--ink); margin:0; font-weight:600}
-  .steps span code{font-size:12px; background:var(--code-bg); padding:1px 4px; border-radius:4px; overflow-wrap:anywhere}
-
-  /* reference cards, grouped by stage */
-  /* reference map — stage → chips definition list (voids impossible by construction; lighter
-     than the card-heavy neighbouring sections, so it varies the page rhythm) */
-  .refmap{margin-top:20px}
-  .refrow{display:grid; grid-template-columns:200px 1fr; gap:8px 18px; padding:14px 0; align-items:start}
-  .refrow + .refrow{border-top:1px solid var(--line)}
-  .refrow dt, .refrow dd{margin:0}
-  .reflabel{display:flex; align-items:center; gap:8px; font-family:ui-monospace,Menlo,monospace; font-size:14px; letter-spacing:-.01em; color:var(--ink)}
-  .reflabel .lu{color:var(--accent); width:16px; height:16px; flex:none}
-  .reflabel .ct{margin-left:auto; font-size:11px; color:var(--accent); border:1px solid var(--accent); border-radius:999px; padding:1px 8px; font-family:system-ui; flex:none}
-  .refchips{display:flex; flex-wrap:wrap; gap:7px 8px; align-items:baseline}
-  .refchips .ref{display:inline-flex; align-items:baseline; gap:6px}
-  .refchips code{background:var(--code-bg); padding:2px 8px; border-radius:5px; font-size:12px; white-space:nowrap}
-  .refchips .d{font-size:11.5px; color:var(--muted)}
-  @media (max-width:640px){
-    .refrow{grid-template-columns:1fr; gap:9px 0}
-    .reflabel .ct{margin-left:8px}
-  }
+  /* boundary — owns vs hands off */
+  .boundary{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px}
+  .bcol{border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:var(--panel)}
+  .bcol.own{border-left:3px solid var(--accent)}
+  .bcol.off{border-left:3px solid var(--glyph)}
+  .bcol h3{font-family:ui-monospace,Menlo,monospace; font-size:13.5px; margin:0 0 4px; display:flex; align-items:center; gap:8px}
+  .bcol.own h3{color:var(--accent)} .bcol.own h3 .lu{color:var(--accent)}
+  .bcol.off h3{color:var(--muted)} .bcol.off h3 .lu{color:var(--glyph)}
+  .bcol .sub{font-size:12.5px; color:var(--muted); margin:0 0 12px}
+  .bitems{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px}
+  .bitems li{font-size:13.5px; line-height:1.4}
+  .bitems li b{font-family:ui-monospace,Menlo,monospace; font-weight:600; font-size:12.5px; color:var(--ink)}
+  .bitems.hand li b{color:var(--tok-reg)}
+  .bitems li .d{color:var(--muted)}
+  .bnote{margin-top:14px; font-size:13.5px; color:var(--muted); display:flex; gap:9px; line-height:1.55}
+  .bnote .lu{color:var(--accent); flex:none; margin-top:1px; width:17px; height:17px}
+  .bnote b{color:var(--ink)}
+  @media (max-width:640px){ .boundary{grid-template-columns:1fr} }
 
   /* tables */
   .tblwrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px; margin-top:20px}
   table{border-collapse:collapse; width:100%; font-size:14px; background:var(--panel)}
   th{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:12.5px; font-weight:600; text-align:left; color:var(--muted); padding:10px 16px; border-bottom:1px solid var(--line)}
-  td{padding:10px 16px; border-bottom:1px solid var(--line); vertical-align:top}
+  td{padding:11px 16px; border-bottom:1px solid var(--line); vertical-align:top}
   tr:last-child td{border-bottom:none}
   td code{background:var(--code-bg); padding:1px 6px; border-radius:4px; font-size:12.5px; white-space:nowrap}
   td code a{color:inherit; text-decoration:none}
   td code a:hover{text-decoration:underline}
-  td.dim{font-weight:600; font-family:ui-monospace,Menlo,monospace; font-size:13px; color:var(--tok-dim); white-space:nowrap}
-  td .d{color:var(--muted)}
+  td.job{font-weight:600; color:var(--ink); line-height:1.4}
+  td .canon{color:var(--muted); font-size:12.5px; line-height:1.5}
+  td .canon b{color:var(--ink); font-weight:600}
+  td .prod{color:var(--muted); font-size:12.5px; line-height:1.45}
+  td.dim{font-weight:600; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--tok-reg); white-space:nowrap}
 
   .note{background:var(--amber-bg); border:1px solid var(--amber); border-radius:8px; padding:12px 16px; font-size:14px; margin-top:16px; max-width:none}
   .note b{color:var(--amber)}
 
-  /* rails — the laws */
+  /* surface overlays */
+  .overlays{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; margin-top:20px}
+  .ov{border:1px solid var(--line); border-radius:10px; padding:15px 17px; background:var(--panel)}
+  .ov.wedge{border-color:var(--tok-reg); box-shadow:0 0 0 1px var(--tok-reg) inset; background:linear-gradient(180deg,color-mix(in srgb,var(--tok-reg) 7%,var(--panel)),var(--panel))}
+  .ov h3{font-family:ui-monospace,Menlo,monospace; font-size:14px; margin:0 0 3px; display:flex; align-items:center; gap:8px; color:var(--ink)}
+  .ov h3 .lu{color:var(--accent); width:16px; height:16px}
+  .ov.wedge h3 .lu{color:var(--tok-reg)}
+  .ov .file{font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--muted); margin-left:auto; font-weight:400}
+  .ov .reshape{font-size:13px; color:var(--muted); margin:6px 0 10px; line-height:1.5}
+  .ov .reshape b{color:var(--ink); font-weight:600}
+  .ov .lens{font-size:12px; color:var(--muted); border-top:1px solid var(--line); padding-top:9px; display:flex; gap:7px}
+  .ov .lens .k{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.08em; font-weight:600; color:var(--accent); flex:none}
+  .ov.wedge .lens .k{color:var(--tok-reg)}
+  .ov .badge{display:inline-block; font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.08em; font-weight:600; font-size:10.5px; color:var(--accent-ink); background:var(--tok-reg); border-radius:999px; padding:1px 9px; margin-left:auto}
+
+  /* flagship deep block (quality & testing) */
+  .wedgehead{background:var(--accent); color:var(--accent-ink); border-radius:10px 10px 0 0; padding:14px 20px; font-family:ui-monospace,Menlo,monospace; font-size:15px; font-weight:600; display:flex; align-items:center; gap:10px; margin-top:20px}
+  .wedgehead .lu{width:19px; height:19px}
+  .wedgebody{border:1px solid var(--accent); border-top:none; border-radius:0 0 10px 10px; padding:20px; background:var(--panel)}
+  .wedgegrid{display:grid; grid-template-columns:1.05fr 1fr; gap:18px}
+  @media (max-width:720px){ .wedgegrid{grid-template-columns:1fr} }
+  .harnessblock{background:var(--code-bg); border:1px solid var(--line); border-radius:8px; padding:14px 16px; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; line-height:1.75; overflow-x:auto; white-space:pre; margin:0; min-width:0; max-width:100%}
+  .harnessblock .k{color:var(--accent)}
+  .harnessblock .s{color:var(--ink)}
+  .harnessblock .c{color:var(--muted)}
+  .wcol h3{font-family:ui-monospace,Menlo,monospace; font-size:13px; margin:0 0 8px; color:var(--ink)}
+  .ladder{list-style:none; padding:0; margin:0 0 16px; display:flex; flex-direction:column; gap:6px}
+  .ladder li{font-size:12.5px; line-height:1.4; display:flex; gap:9px; align-items:baseline}
+  .ladder li .t{font-family:ui-monospace,Menlo,monospace; font-weight:600; font-size:12px; flex:none; width:150px; color:var(--ink)}
+  .ladder li .d{color:var(--muted)}
+  .ladder li.good .t{color:var(--good)} .ladder li.warn .t{color:var(--amber)} .ladder li.bad .t{color:var(--bad)}
+  .sharprule{margin-top:18px; background:var(--amber-bg); border:1px solid var(--amber); border-radius:8px; padding:13px 16px; font-size:13.5px; line-height:1.5}
+  .sharprule b{color:var(--amber)}
+  .sharprule .cc{display:flex; flex-wrap:wrap; gap:6px; margin-top:9px}
+  .sharprule .cc span{font-family:ui-monospace,Menlo,monospace; font-size:11.5px; color:var(--muted); background:var(--panel); border:1px solid var(--line); border-radius:5px; padding:2px 8px}
+
+  /* distinctives band — subtract-the-buzzword + anti-staleness/license spread */
+  .bandgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px}
+  @media (max-width:720px){ .bandgrid{grid-template-columns:1fr} }
+  .band{border:1px solid var(--line); border-radius:10px; padding:17px 19px; background:var(--panel)}
+  .band.sub{border-top:3px solid var(--accent)}
+  .band.stale{border-top:3px solid var(--amber)}
+  .band h3{font-family:ui-monospace,Menlo,monospace; font-size:14px; margin:0 0 4px; display:flex; align-items:center; gap:9px; color:var(--ink)}
+  .band.sub h3 .lu{color:var(--accent)} .band.stale h3 .lu{color:var(--amber)}
+  .band .sub2{font-size:12.5px; color:var(--muted); margin:0 0 12px; line-height:1.5}
+  .band .sub2 b{color:var(--ink)}
+  .subrules{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px}
+  .subrules li{font-size:13px; line-height:1.45; display:flex; gap:9px}
+  .subrules li .lu{flex:none; margin-top:1px; width:15px; height:15px}
+  .band.sub .subrules li .lu{color:var(--accent)} .band.stale .subrules li .lu{color:var(--amber)}
+  .subrules li b{color:var(--ink); font-family:ui-monospace,Menlo,monospace; font-size:12px; font-weight:600}
+  .subrules li .d{color:var(--muted)}
+  .lictbl{margin-top:13px; border:1px solid var(--line); border-radius:7px; overflow:hidden}
+  .lirow{display:grid; grid-template-columns:140px 1fr; gap:0; font-size:12px; border-bottom:1px solid var(--line)}
+  .lirow:last-child{border-bottom:none}
+  .lirow .lk{font-family:ui-monospace,Menlo,monospace; font-weight:600; color:var(--ink); padding:8px 12px; background:var(--code-bg); border-right:1px solid var(--line)}
+  .lirow .lv{color:var(--muted); padding:8px 12px; line-height:1.4}
+  .lirow .lv b{color:var(--tok-val); font-weight:600}
+  .lirow .lv i{color:var(--bad); font-style:normal; font-weight:600}
+
+  /* invariants — the spine */
   .rules{list-style:none; padding:0; margin:20px 0 0; display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px}
-  .rules li{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--amber); border-radius:6px; padding:12px 16px; font-size:14px; line-height:1.5}
-  .rules li b{display:flex; align-items:center; gap:7px; font-family:ui-monospace,Menlo,monospace; font-size:13px; margin-bottom:3px}
+  .rules li{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--amber); border-radius:6px; padding:12px 16px; font-size:13.5px; line-height:1.5}
+  .rules li b{display:flex; align-items:center; gap:7px; font-family:ui-monospace,Menlo,monospace; font-size:13px; margin-bottom:3px; color:var(--ink)}
   .rules li b .lu{width:15px; height:15px; color:var(--amber)}
-  /* if the laws list ends on an orphan cell, make the last item a full-width capstone
-     (title | text) so the wide card reads as a deliberate closing emphasis, not a gap */
   .rules li:last-child{grid-column:1 / -1; display:flex; align-items:baseline; gap:22px}
-  .rules li:last-child b{margin-bottom:0; flex:none; width:230px}
+  .rules li:last-child b{margin-bottom:0; flex:none; width:250px}
   @media (max-width:620px){ .rules li:last-child{flex-direction:column; gap:3px} .rules li:last-child b{width:auto} }
-  .loopback{display:flex; gap:10px; margin-top:12px; font-size:13.5px; color:var(--muted); line-height:1.55; max-width:none}
-  .loopback .ic{color:var(--accent); flex:none; margin-top:1px}
-  .loopback .ic .lu{width:17px; height:17px}
-  .loopback b{color:var(--ink)}
+
+  /* workflow loop strip */
+  .vloop{display:flex; flex-wrap:wrap; align-items:stretch; gap:0; margin-top:20px; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--panel)}
+  .vstep{flex:1 1 0; min-width:120px; padding:14px 16px; border-right:1px solid var(--line); display:flex; flex-direction:column; gap:5px}
+  .vstep:last-child{border-right:none}
+  .vstep .n{font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--glyph)}
+  .vstep .t{font-family:ui-monospace,Menlo,monospace; font-size:13.5px; color:var(--ink); font-weight:600; display:flex; align-items:center; gap:6px}
+  .vstep .t .ok{color:var(--good)}
+  .vstep .d{font-size:11.5px; color:var(--muted); line-height:1.4}
+  @media (max-width:640px){ .vstep{flex-basis:45%; border-right:1px solid var(--line)} }
+
+  /* artifacts grid */
+  .artgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; margin-top:20px}
+  .art{border:1px solid var(--line); border-radius:10px; padding:15px 17px; background:var(--panel)}
+  .art h3{font-family:ui-monospace,Menlo,monospace; font-size:13.5px; margin:0 0 4px; display:flex; align-items:center; gap:8px; color:var(--ink)}
+  .art h3 .lu{color:var(--accent); width:16px; height:16px; flex:none}
+  .art .file{display:block; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--muted); margin:0 0 8px}
+  .art p{font-size:12.5px; color:var(--muted); margin:0; line-height:1.5; max-width:none}
+  .art p b{color:var(--ink); font-weight:600}
+
+  /* the RAG three-way seam */
+  .rgseam{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px}
+  @media (max-width:760px){ .rgseam{grid-template-columns:1fr} }
+  .rgcol{border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:var(--panel)}
+  .rgcol.mid{border-top:3px solid var(--tok-reg); background:linear-gradient(180deg,color-mix(in srgb,var(--tok-reg) 6%,var(--panel)),var(--panel))}
+  .rgcol h3{font-family:ui-monospace,Menlo,monospace; font-size:15px; margin:0 0 6px; display:flex; align-items:center; gap:8px}
+  .rgcol.mid h3{color:var(--tok-reg)}
+  .rgcol h3 .lu{color:var(--muted); width:16px; height:16px}
+  .rgcol.mid h3 .lu{color:var(--tok-reg)}
+  .rgcol p{font-size:12.5px; color:var(--muted); margin:0; line-height:1.5; max-width:none}
+  .rgcol p b{color:var(--ink); font-weight:600}
+
+  /* handoff seam */
+  .seam{display:grid; grid-template-columns:1fr auto 1fr; gap:0 18px; align-items:stretch; margin-top:20px}
+  .seambox{border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:var(--panel)}
+  .seambox.mid{border-color:var(--accent); background:var(--code-bg)}
+  .seambox h3{font-family:ui-monospace,Menlo,monospace; font-size:13.5px; margin:0 0 8px; display:flex; align-items:center; gap:8px; color:var(--ink)}
+  .seambox h3 .lu{width:16px; height:16px; color:var(--accent)}
+  .seambox p{font-size:12.5px; color:var(--muted); margin:0; line-height:1.5; max-width:none}
+  .seamyaml{font-family:ui-monospace,Menlo,monospace; font-size:11.5px; line-height:1.7; color:var(--muted); margin:0; white-space:pre; overflow-x:auto; min-width:0; max-width:100%}
+  .seamyaml .k{color:var(--accent)} .seamyaml .v{color:var(--ink)} .seamyaml .req{color:var(--tok-val)}
+  .seamarrows{display:flex; flex-direction:column; justify-content:center; gap:16px; color:var(--accent); font-family:ui-monospace,Menlo,monospace; font-size:22px}
+  .downstream{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px}
+  @media (max-width:900px){ .downstream{grid-template-columns:1fr} }
+  @media (max-width:760px){
+    .seam{grid-template-columns:1fr; gap:14px}
+    .seamarrows{flex-direction:row; justify-content:center; gap:40px}
+    .seamarrows span{transform:rotate(90deg)}
+  }
+  .seamnote{margin-top:14px; font-size:13.5px; color:var(--muted); display:flex; gap:9px; line-height:1.55}
+  .seamnote .lu{color:var(--accent); flex:none; margin-top:1px; width:17px; height:17px}
+  .seamnote b{color:var(--ink)}
 
   /* details / appendix */
   details.disc{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:0; margin-top:14px}
@@ -196,150 +331,530 @@
   .files .hl{color:var(--accent); font-weight:600}
 
   footer{margin-top:72px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
-  /* iOS 26 chrome tint: Safari samples fixed edge elements; theme-color alone is ignored */
   .edge{position:fixed; left:0; right:0; height:8px; background:var(--bg); z-index:0; pointer-events:none}
   .edge.top{top:0} .edge.bottom{bottom:0}
-  @media (max-width:720px){
-    .prow{flex-direction:column; align-items:flex-start}
-    .prow .arr{transform:rotate(90deg); margin-left:18px}
-  }
 </style>
 </head>
 <body>
 <div class="edge top" aria-hidden="true"></div>
 <div class="edge bottom" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="lu-file-input" viewBox="0 0 24 24"><path d="M4 11V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></symbol>
-  <symbol id="lu-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="lu-scroll-text" viewBox="0 0 24 24"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></symbol>
-  <symbol id="lu-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
-  <symbol id="lu-clipboard-check" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
-  <symbol id="lu-search-check" viewBox="0 0 24 24"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-  <symbol id="lu-file-output" viewBox="0 0 24 24"><path d="M4.226 20.925A2 2 0 0 0 6 22h12a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v3.127"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="m5 11-3 3"/><path d="m5 17-3-3h10"/></symbol>
-  <symbol id="lu-files" viewBox="0 0 24 24"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"/><path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></symbol>
-  <symbol id="lu-sliders-horizontal" viewBox="0 0 24 24"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></symbol>
-  <symbol id="lu-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
-  <symbol id="lu-coins" viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><path d="M15 6h1v4"/><path d="m6.134 14.768.866-.5 2 3.464"/><circle cx="16" cy="8" r="6"/></symbol>
+  <symbol id="lu-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+  <symbol id="lu-git-fork" viewBox="0 0 24 24"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></symbol>
+  <symbol id="lu-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
   <symbol id="lu-split" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></symbol>
-  <symbol id="lu-copy-x" viewBox="0 0 24 24"><line x1="12" x2="18" y1="12" y2="18"/><line x1="12" x2="18" y1="18" y2="12"/><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
-  <symbol id="lu-workflow" viewBox="0 0 24 24"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></symbol>
+  <symbol id="lu-sliders-horizontal" viewBox="0 0 24 24"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></symbol>
+  <symbol id="lu-braces" viewBox="0 0 24 24"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></symbol>
+  <symbol id="lu-arrow-left-right" viewBox="0 0 24 24"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></symbol>
+  <symbol id="lu-git-branch" viewBox="0 0 24 24"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+  <symbol id="lu-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+  <symbol id="lu-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="lu-search-check" viewBox="0 0 24 24"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="lu-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="lu-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
+  <symbol id="lu-coins" viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><path d="M15 6h1v4"/><path d="m6.134 14.768.866-.5 2 3.464"/><circle cx="16" cy="8" r="6"/></symbol>
+  <symbol id="lu-shield-alert" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
   <symbol id="lu-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="m6.08 9.5-3.5 1.6a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59"/><path d="m6.08 14.5-3.5 1.6a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59"/></symbol>
-  <symbol id="lu-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="lu-workflow" viewBox="0 0 24 24"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></symbol>
+  <symbol id="lu-trending-up" viewBox="0 0 24 24"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></symbol>
+  <symbol id="lu-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+  <symbol id="lu-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></symbol>
+  <symbol id="lu-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+  <symbol id="lu-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="lu-list-checks" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol>
+  <symbol id="lu-file-check" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></symbol>
+  <symbol id="lu-file-input" viewBox="0 0 24 24"><path d="M4 11V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></symbol>
+  <symbol id="lu-files" viewBox="0 0 24 24"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"/><path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></symbol>
 </svg>
 <div class="wrap">
 <header>
-  <div class="eyebrow">TODO: an agent skill · one short descriptor chip</div>
+  <div class="eyebrow">an agent skill · the analytical &amp; governed data plane</div>
   <nav class="toplinks" aria-label="external links">
     <a href="https://github.com/gabros20/data-skill" target="_blank" rel="noopener">GitHub</a>
     <a href="https://github.com/gabros20/data-skill#install" target="_blank" rel="noopener">Install</a>
     <a href="/llms.txt">llms.txt</a>
   </nav>
   <h1><span class="sl">/</span>data</h1>
-  <p class="lede">TODO sentence 1 — the generic, forgettable result an agent produces without this
-  skill. TODO sentence 2 — what data replaces that with, ending on Make product and business data trustworthy, governed, usable.</p>
-  <div class="term" style="margin-top:22px"><span class="c"># that's the whole start</span>
-<span class="p">/data</span> TODO — the shortest real ask that would trigger this skill</div>
+  <p class="lede">Ask an agent to "track this event" and it ships an ad-hoc payload — no naming
+  grammar, no schema, no test, a warehouse table nobody trusts and nobody can safely change.
+  <b>data</b> builds the <i>analytical and governed data plane</i> — event contracts and tracking
+  plans, ingestion and movement, transformation and modeling, the metrics/semantic layer and BI,
+  data quality and testing, lineage and observability, governance/PII/retention, experiment
+  measurement, and platform/cost — re-verifying every volatile tool, price, and license fact against
+  the live source, and treating trust as a gate a dataset must pass, not a dashboard it decorates.
+  Make product and business data trustworthy, governed, discoverable, usable.</p>
+  <div class="term" style="margin-top:22px"><span class="c"># natural language — no flags, no fixed pipeline</span>
+<span class="p">/data</span> write an ODCS contract for the orders event, add a DQ suite with the PK floor, and diff the blast radius before merge</div>
   <p class="hosts"><span class="hl">runs on</span><span class="ref">Claude Code</span><span>Codex</span><span>Cursor</span><span>Antigravity</span><span>opencode</span><span>Grok Build</span><span>Hermes</span></p>
   <nav class="secnav" aria-label="page sections">
-    <a href="#arc">the arc</a><a href="#laws">the laws</a><a href="#pick">pick by job</a>
-    <a href="#refs">reference map</a><a href="#start">start here</a>
+    <a href="#mission">mission</a><a href="#router">the router</a><a href="#jobs">by job</a>
+    <a href="#surfaces">surfaces</a><a href="#quality">quality &amp; testing ⭐</a><a href="#distinct">what's distinct</a>
+    <a href="#laws">invariants</a><a href="#artifacts">artifacts</a><a href="#handoff">handoff</a><a href="#start">start here</a>
   </nav>
-</header>
 
-<section id="arc">
-  <h2><svg class="lu" aria-hidden="true"><use href="#lu-workflow"/></svg>The workflow arc</h2>
-  <p>TODO: state the arc here — how many stages/strategies, and whether the agent can enter at
-  any point or must run it start to finish.</p>
   <div class="vidwrap" id="vidwrap"></div>
   <!-- render from remotion/, see remotion/README -->
-  <div class="poster" role="img" aria-label="TODO: describe the diagram this poster stands in for.">
-    <p class="arcline"><b>TODO stage 1</b> <span class="ar">→</span> <b>TODO stage 2</b> <span class="ar">→</span> <b>TODO stage 3</b></p>
+  <div class="herofallback router" role="img" aria-label="The faceted router: before quoting any tool version, warehouse price, or license, re-verify it against the live source, then one primary job (quality and testing) composes with at most one base surface (warehouse platform) plus the additive regulated overlay to resolve to the smallest sufficient reference set — three files, read fully, out of sixteen.">
+    <div class="gate"><svg class="lu" aria-hidden="true"><use href="#lu-refresh-cw"/></svg><span><b>Retrieval-first / anti-staleness gate</b> — before quoting any tool version, warehouse price, spec revision, or license, re-verify it against the live source and read the LICENSE <i>file</i>, never a repo's API license field. This layer churns quarterly; memorized facts are stale.</span></div>
+    <div class="rlane">
+      <div class="rlabel">① primary job<small>exactly one</small></div>
+      <div class="chips">
+        <span class="chip">tracking</span><span class="chip">contracts</span><span class="chip">ingestion</span>
+        <span class="chip">transformation</span><span class="chip">metrics/BI</span><span class="chip star">quality-testing ⭐</span>
+        <span class="chip">lineage</span><span class="chip">governance</span><span class="chip">experiment</span><span class="chip">platform/cost</span>
+      </div>
+    </div>
+    <div class="rlane">
+      <div class="rlabel">② base surface<small>at most one</small></div>
+      <div class="chips">
+        <span class="chip">product-analytics</span><span class="chip on">warehouse-platform</span>
+        <span class="chip">operational-activation</span><span class="chip">ai-data-plane</span>
+      </div>
+    </div>
+    <div class="rlane">
+      <div class="rlabel">③ regulated overlay<small>additive ⭐</small></div>
+      <div class="chips">
+        <span class="chip regon">surface-regulated</span><span class="chip" style="border-style:dashed">stacks on top — never replaces</span>
+      </div>
+    </div>
+    <div class="rdown"><span>compose →</span></div>
+    <div class="readset">
+      <code>quality-and-testing.md</code><code>surface-warehouse-platform.md</code><code class="reg">surface-regulated.md</code>
+      <span class="cnt"><b>3 of 16</b> loaded · read fully</span>
+    </div>
+    <p class="rrule"><svg class="lu" aria-hidden="true"><use href="#lu-route"/></svg><span><b>Route before acting.</b> Pick one job and at most one base surface, read only those references — never the whole library. When GDPR/CCPA/HIPAA/SOC2 applies, <code>surface-regulated</code> stacks additively on top; it does not replace the base surface.</span></p>
   </div>
-  <p class="pcap">TODO: note which stages (if any) also stand alone, entered without the rest of the arc.</p>
+  <p class="pcap"><b>The router is the skill.</b> There is no fixed pipeline to run start-to-finish —
+  each job stands alone and enters where your request is. The animation traces one path; the sections
+  below map the whole surface it routes across.</p>
+</header>
 
-  <div class="steps">
-    <div><b><svg class="lu" aria-hidden="true"><use href="#lu-sliders-horizontal"/></svg>TODO stage 1</b><span>TODO one-line job for this stage. → <code>references/example.md</code></span></div>
-    <div><b><svg class="lu" aria-hidden="true"><use href="#lu-files"/></svg>TODO stage 2</b><span>TODO one-line job for this stage.</span></div>
-    <div><b><svg class="lu" aria-hidden="true"><use href="#lu-file-output"/></svg>TODO stage 3</b><span>TODO one-line job for this stage.</span></div>
+<section id="mission">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-git-fork"/></svg>Own the analytical plane, not the served substrate</h2>
+  <p>data treats data <i>as a product</i> — distinct from <b>backend</b> (data as application state)
+  and <b>ai</b> (data as model context). It owns the event contract and tracking plan, data contracts
+  and schema evolution, ingestion and movement, transformation and modeling, the metrics/semantic
+  layer and BI, data quality and testing, lineage and observability, governance/PII/retention,
+  experiment measurement validity, and platform/cost choices — the <b>analytical and governed data
+  plane</b>, peer of frontend and backend. It <i>references</i> the substrates and outcomes that plane
+  serves rather than re-deriving or overriding them: <b>backend</b> serves the OLTP store, <b>ai</b>
+  decides retrieval behavior, <b>product</b> names the outcomes, <b>growth</b> designs the experiment.</p>
+  <div class="boundary">
+    <div class="bcol own">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>data owns</h3>
+      <p class="sub">the analytical/governed plane &amp; the decision record behind it</p>
+      <ul class="bitems">
+        <li><b>event contract + tracking plan</b> <span class="d">— one naming grammar, entity-first modeling, consent gates collection</span></li>
+        <li><b>data contracts + schema evolution</b> <span class="d">— ODCS shape, 7 compatibility modes, write-audit-publish</span></li>
+        <li><b>ingestion, transformation + modeling</b> <span class="d">— sync-strategy, CDC/outbox, narrow-the-DAG/widen-tables</span></li>
+        <li><b>metrics/semantic layer + BI</b> <span class="d">— one authoritative definition per metric, decision-first serving</span></li>
+        <li><b>quality &amp; testing ⭐</b> <span class="d">— the convergent DQ taxonomy, PK floor, PR-time blast-radius diff</span></li>
+        <li><b>lineage, governance + experiment validity</b> <span class="d">— OpenLineage, platform-layer masking, SRM-before-trust</span></li>
+      </ul>
+    </div>
+    <div class="bcol off">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-git-fork"/></svg>references / hands off to</h3>
+      <p class="sub">consume or recommend; own none</p>
+      <ul class="bitems hand">
+        <li><b>backend</b> <span class="d">— OLTP schemas, app queries, the DB/vector store *as served substrate*</span></li>
+        <li><b>ai</b> <span class="d">— retrieval *behavior* (chunk/rerank tuning), prompts, model evals, agent construction</span></li>
+        <li><b>frontend / backend</b> <span class="d">— emit the events/writes; data defines and validates the contract</span></li>
+        <li><b>product</b> <span class="d">— which outcomes/metrics matter; data makes them measurable and trustworthy</span></li>
+        <li><b>growth</b> <span class="d">— experiment design and interpretation; data guarantees measurement validity</span></li>
+        <li><b>architecture · quality · operate · automation</b> <span class="d">— boundaries/NFR/threat model; independent gate; deploy/monitor; deterministic workflows</span></li>
+      </ul>
+    </div>
   </div>
-  <div class="loopback"><span class="ic"><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg></span><span>TODO: state the loop-back rule, if this skill has a review/QA gate that can send work back through an earlier stage.</span></div>
+  <p class="bnote"><svg class="lu" aria-hidden="true"><use href="#lu-shield-alert"/></svg><span><b>Implement inside the decision.</b> When compatible upstream artifacts are supplied — a solution-architecture doc, an NFR budget, a threat model, a <code>handoff.yaml</code> — data builds against them. When they don't exist (a standalone run), it says so explicitly rather than inventing a data-classification decision or threat model to fill the gap.</span></p>
+</section>
+
+<section id="router">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-route"/></svg>The faceted router</h2>
+  <p>SKILL.md is a router, not a script. Every request selects the smallest sufficient route:
+  <b>one primary job</b> — the ten below — combined with <b>at most one base surface</b> that reshapes
+  how the job applies to the data-plane shape, plus the <b>additive regulated overlay</b> when
+  GDPR/CCPA/HIPAA/SOC2 applies. Read the selected references completely; load two or three at most,
+  never the whole pack. Ten jobs and five surfaces compose across data-plane shapes without ever
+  reading all sixteen references at once.</p>
+  <div class="tblwrap"><table>
+    <tr><th>facet</th><th>options</th><th>rule</th></tr>
+    <tr>
+      <td class="job">① Primary job</td>
+      <td class="prod">event-tracking · data-contracts · ingestion/movement · transformation/modeling · metrics/BI · <b>quality-testing ⭐</b> · lineage/observability · governance/PII · experiment-measurement · platform/cost</td>
+      <td class="canon"><b>Exactly one.</b> Pick the single job the request needs; the default entry is the surface's spine (e.g. the tracking plan for product analytics).</td>
+    </tr>
+    <tr>
+      <td class="job">② Base surface</td>
+      <td class="prod">product-analytics <span style="color:var(--muted)">(default / start-simplest)</span> · warehouse-platform · operational-activation · ai-data-plane</td>
+      <td class="canon"><b>At most one.</b> The data-plane shape reshapes how every job applies — it points to the job references, it doesn't redefine them.</td>
+    </tr>
+    <tr>
+      <td class="job">③ Regulated overlay <span style="color:var(--amber)">⭐</span></td>
+      <td class="dim">surface-regulated — GDPR/CCPA/HIPAA/SOC2 on top of any base surface</td>
+      <td class="canon"><b>Additive.</b> Stacks <i>on top of</i> the base surface, never replaces it. A regulated warehouse platform is warehouse-platform <b>+</b> regulated.</td>
+    </tr>
+  </table></div>
+  <div class="note"><b>Retrieval-first before any code — or any tool name.</b> The warehouse/
+  orchestrator/price/license layer churns quarterly; memorized numbers and license labels are stale.
+  Before recommending a tool or quoting a price, version, or spec revision, re-verify it against the
+  live source — the pricing page, <code>npm view</code>/PyPI, the tool's own changelog — and read the
+  actual <code>LICENSE</code> <i>file</i>, never a repo's API license field (this stack is a minefield
+  of stale-root-LICENSE traps and open-core splits, e.g. <code>soda-core</code>'s ELv2).</div>
+</section>
+
+<section id="jobs">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-files"/></svg>The ten primary jobs</h2>
+  <p>Each job is one reference, read fully only when its route is selected — grounded in named canon,
+  producing a running pipeline/contract plus the decision record behind it. This is the whole surface,
+  not a headline slice.</p>
+  <div class="tblwrap"><table>
+    <tr><th>I need to…</th><th>Read</th><th>Produces</th></tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-tag"/></svg> Design/repair event tracking — naming grammar, tracking plan, instrumentation QA, consent-aware collection</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/event-taxonomy-and-tracking.md">event-taxonomy-and-tracking.md</a></code></td>
+      <td class="prod">One enforced naming grammar, entity-first modeling, validate-at-ingestion/quarantine, consent gates collection ("denied" is tested)</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-braces"/></svg> Write/enforce a data contract; evolve a schema safely across producers and consumers</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/data-contracts-and-schema-evolution.md">data-contracts-and-schema-evolution.md</a></code></td>
+      <td class="prod">ODCS contract shape, the 7 compatibility modes + who-upgrades-first, contract-as-executable-test, write-audit-publish under the brand</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-arrow-left-right"/></svg> Move data — ELT/ETL, sync strategy, CDC, streaming decision, reverse-ETL, failed-sync diagnosis</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/ingestion-and-movement.md">ingestion-and-movement.md</a></code></td>
+      <td class="prod">Sync-type decision table (by table shape), at-least-once/resumability semantics, CDC + outbox, symptom→cause→fix with destructive-action gating</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-git-branch"/></svg> Transform and model — staging→marts layering, materialization, SQL style, modeling choice</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/transformation-and-modeling.md">transformation-and-modeling.md</a></code></td>
+      <td class="prod">Narrow-the-DAG/widen-the-tables, lint-rule thresholds (1:1 staging, ≤7 joins, chained views), materialization ladder, Kimball/OBT/Vault trade-offs</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-gauge"/></svg> Define metrics once — semantic layer, BI serving, dashboards-as-code vs GUI, NL-to-data</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/metrics-semantics-and-bi.md">metrics-semantics-and-bi.md</a></code></td>
+      <td class="prod">Metric-type taxonomy, one-authoritative-definition anti-drift, code-first vs GUI-first BI line, 4-tier NL fallback, decision-first serving</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-shield-check"/></svg> Prove the data is right — checks, anomaly detection, PR-time diff, test placement <span style="color:var(--amber)">⭐</span></td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/quality-and-testing.md">quality-and-testing.md</a></code></td>
+      <td class="prod">The convergent DQ taxonomy (9 core buckets + PR-diff + PII), known- vs unknown-unknowns layering, where-to-run-checks, PK test floor, blast-radius diff before merge</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-search-check"/></svg> Trace lineage and observe pipelines — impact analysis, incident response for data</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/lineage-and-observability.md">lineage-and-observability.md</a></code></td>
+      <td class="prod">OpenLineage model + facet gotchas, five pillars/data downtime, blast-radius workflow, catalog choice</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-lock"/></svg> Govern the data — PII classification/masking, retention/erasure, catalogs, mesh-vs-central</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/governance-pii-and-retention.md">governance-pii-and-retention.md</a></code></td>
+      <td class="prod">Platform-layer masking (app-layer is bypassed), Art.17-with-exceptions erasure, tombstone + scheduled hard-delete, federated-governance caveat</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-scale"/></svg> Make experiment measurement trustworthy — assignment, SRM, variance reduction, peeking</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/experiment-measurement-foundations.md">experiment-measurement-foundations.md</a></code></td>
+      <td class="prod">SRM-before-trust, deterministic salted assignment + namespaces, CUPED + non-applicability, peek-safe sequential testing</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-coins"/></svg> Pick the platform — warehouse/lakehouse/engine choice, table formats, orchestrator, cost, licenses</td>
+      <td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/platform-and-cost.md">platform-and-cost.md</a></code></td>
+      <td class="prod">Small-data-first (COST rule), workload-shape-before-pricing, Iceberg-REST interop, task-vs-asset-vs-flow orchestrators, the licensing map</td>
+    </tr>
+  </table></div>
+  <p style="margin-top:12px">Full router table &amp; invariants: <a href="https://github.com/gabros20/data-skill/blob/main/skills/data/SKILL.md#route-before-acting">SKILL.md</a>.</p>
+</section>
+
+<section id="surfaces">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>Five surface overlays</h2>
+  <p>One base surface, at most, reshapes every job for the data-plane shape — the same quality job is
+  bounded differently on a single product's event stream than on a central platform serving many
+  teams. The <b>regulated</b> overlay is <b>additive</b> — it stacks on top of whichever base you
+  picked, never replaces it — and carries a distinct teal identity throughout this page.</p>
+  <div class="overlays">
+    <div class="ov">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-trending-up"/></svg>Product analytics <span class="file">surface-product-analytics.md</span></h3>
+      <p class="reshape">A product emitting its own usage events (the <b>default / start-simplest</b>):
+      tracking plan is the spine, identity resolution across anonymous/known users, small-data
+      default engine, self-serve SQL vs BI split.</p>
+      <p class="lens"><span class="k">reshapes</span>tracking-plan-first · identity resolution · self-serve default</p>
+    </div>
+    <div class="ov">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>Warehouse platform <span class="file">surface-warehouse-platform.md</span></h3>
+      <p class="reshape">A central analytical platform serving an org: ELT + staging→marts spine, a
+      semantic layer with real BI serving, org-scale trust gates, mesh-vs-central and cost
+      governance as first-class decisions.</p>
+      <p class="lens"><span class="k">reshapes</span>ELT spine · semantic layer · mesh-vs-central</p>
+    </div>
+    <div class="ov">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-refresh-cw"/></svg>Operational activation <span class="file">surface-operational-activation.md</span></h3>
+      <p class="reshape">Warehouse data flowing back into operations: CDC/outbox + reverse-ETL,
+      freshness SLAs, idempotency under at-least-once delivery, diagnosis with destructive-action
+      gating on any resync/backfill.</p>
+      <p class="lens"><span class="k">reshapes</span>CDC/reverse-ETL · freshness SLA · idempotency</p>
+    </div>
+    <div class="ov">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-bot"/></svg>AI data plane <span class="file">surface-ai-data-plane.md</span></h3>
+      <p class="reshape">The data substrate of an AI product: the RAG corpus modeled as governed
+      ETL, LLM-trace/token warehousing, point-in-time correctness for served context, eval datasets
+      treated as governed data.</p>
+      <p class="lens"><span class="k">reshapes</span>RAG-as-ETL · point-in-time correctness · trace warehousing</p>
+    </div>
+    <div class="ov wedge">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-lock"/></svg>Regulated <span class="badge">additive ⭐</span></h3>
+      <p class="reshape">GDPR/CCPA/HIPAA/SOC2 applies. <b>Stacks on, does not replace.</b> Verified
+      consent gating, mandatory platform-layer masking, Art.17-with-exceptions erasure operations,
+      retention schedules, audit trails — on top of any base surface.</p>
+      <p class="lens"><span class="k">reshapes</span>consent gating · platform-layer masking · erasure ops</p>
+    </div>
+  </div>
+</section>
+
+<section id="quality">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>The quality-and-testing flagship</h2>
+  <p>Most of the field treats data quality as a dashboard someone checks after the fact; here
+  <b>trust is a gate</b>. Five independent tools (Great Expectations, Soda, Elementary, Deequ,
+  OpenMetadata) plus two lineage/catalog systems converged on nearly the same check buckets without
+  coordinating — that convergence is the evidence the taxonomy below is complete enough to build a
+  check plan from, not one vendor's opinion.</p>
+  <div class="wedgehead"><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>Trust is a gate, not a dashboard — the convergent DQ taxonomy, known + unknown unknowns, audited, never auto-remediated.</div>
+  <div class="wedgebody">
+    <div class="wedgegrid">
+      <div>
+        <h3>The convergent taxonomy — 9 core buckets + PR-diff + PII</h3>
+<pre class="harnessblock"><span class="k">schema:</span>      <span class="s">structural drift</span>       <span class="c"># col add/remove/type</span>
+<span class="k">freshness:</span>   <span class="s">staleness lag</span>          <span class="c"># cheapest at source/staging</span>
+<span class="k">volume:</span>      <span class="s">row-count anomaly</span>
+<span class="k">completeness:</span><span class="s"> null-rate</span>
+<span class="k">uniqueness:</span>  <span class="s">duplicates</span>             <span class="c"># PK floor: unique + not_null</span>
+<span class="k">validity:</span>    <span class="s">domain / set</span>
+<span class="k">statistical:</span> <span class="s">distributional drift</span>   <span class="c"># unknown unknowns</span>
+<span class="k">referential:</span> <span class="s">cross-table / pair</span>
+<span class="k">custom:</span>      <span class="s">business-rule SQL</span>
+<span class="k">+ PR-diff:</span>   <span class="s">blast-radius review</span>    <span class="c"># before merge, never after</span>
+<span class="k">+ PII:</span>       <span class="s">recognizer → anonymizer</span> <span class="c"># governance-pii-and-retention.md</span></pre>
+      </div>
+      <div class="wcol">
+        <h3>Where to run — and what each layer catches</h3>
+        <ul class="ladder">
+          <li class="good"><span class="t">source / staging</span><span class="d">schema, volume, freshness — cheapest; catch upstream breakage before it propagates</span></li>
+          <li><span class="t">marts</span><span class="d">uniqueness, referential, business-rule — grain and joins are finalized there</span></li>
+          <li class="warn"><span class="t">all layers, over time</span><span class="d">distributional/anomaly — needs a metrics-history store to establish a baseline</span></li>
+        </ul>
+        <h3>Known unknowns vs unknown unknowns — you need both</h3>
+        <ul class="ladder">
+          <li><span class="t">rule tests</span><span class="d">catch failure modes you can name in advance — cheap, and catch more than credited</span></li>
+          <li><span class="t">anomaly detection</span><span class="d">catches "never anomalous before, suddenly is" — the class rules can't name</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sharprule"><b>The sharp distinction:</b> data builds DQ checks <i>into</i> the pipeline —
+    the completion gate that says a dataset is trustworthy. <code>quality</code> verifies
+    <i>independently</i> — the adversarial release gate; it re-derives its own pass rather than
+    re-running data's suite and calling that independent. Quality concerns are first-class:
+      <div class="cc"><span>PK floor on every model</span><span>validate-at-ingestion / quarantine</span><span>PR-time blast-radius diff</span><span>tool license flags</span><span>audit, never auto-remediate</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="distinct">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-scissors"/></svg>What makes this different</h2>
+  <p>Two stances set <b>data</b> apart from the tool-comparison guides and single-topic write-ups: it
+  <b>subtracts the buzzword</b> where the field only renames the same primitive, and it treats the
+  churning warehouse/tool/license layer as a <b>first-class, date-stamped</b> concern rather than
+  frozen trivia.</p>
+  <div class="bandgrid">
+    <div class="band sub">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-scissors"/></svg>Subtract the buzzword, narrow the DAG</h3>
+      <p class="sub2">The field debates abstractions more than it implements them. Name the durable
+      primitive under each brand and recommend <b>that</b>, not the label.</p>
+      <ul class="subrules">
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-git-branch"/></svg><span><b>mesh → ownership</b> <span class="d">— domain ownership with federated enforcement, not a new platform to buy</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-braces"/></svg><span><b>contracts → write-audit-publish</b> <span class="d">— the durable primitive under the "data contracts" brand</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-scissors"/></svg><span><b>modern data stack → a database + SQL</b> <span class="d">— name what's actually being bought before adding a tool</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-target"/></svg><span><b>narrow the DAG, widen the tables</b> <span class="d">— staging is 1:1 no joins; marts are wide; climb the materialization ladder only on measured pain</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-coins"/></svg><span><b>small-data-first (the COST rule)</b> <span class="d">— a distributed system must beat one laptop thread before its complexity is justified</span></span></li>
+      </ul>
+    </div>
+    <div class="band stale">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-refresh-cw"/></svg>Anti-staleness &amp; the license spread</h3>
+      <p class="sub2">The warehouse/tool/price layer churns <b>quarterly</b> — read the LICENSE
+      <i>file</i>, never a repo's API license field. Every volatile fact is date-stamped and
+      re-verified; <code>volatile_facts</code> travels in the handoff so a frozen value can't leak
+      downstream.</p>
+      <ul class="subrules">
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-refresh-cw"/></svg><span><b>re-verify before quoting</b> <span class="d">— pricing page · <code>npm view</code>/PyPI · the tool's own changelog</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg><span><b>read the LICENSE file</b> <span class="d">— a repo's API license field is not proof of what you can actually do with it</span></span></li>
+      </ul>
+      <div class="lictbl">
+        <div class="lirow"><div class="lk">Apache-2.0</div><div class="lv"><b>truly open</b> — Great Expectations, Elementary, dbt + dbt_utils, Recce</div></div>
+        <div class="lirow"><div class="lk">soda-core</div><div class="lv"><i>Elastic License 2.0</i> — non-OSI, source-available; no hosted-service, no license-key circumvention</div></div>
+        <div class="lirow"><div class="lk">dbt-expectations</div><div class="lv"><i>unmaintained</i> — flag the staleness risk; prefer native dbt tests + dbt_utils + Elementary</div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="laws">
-  <h2><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>The non-negotiable laws</h2>
-  <p>These govern everything in the references below — the load-bearing ones, condensed.</p>
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>The universal invariants</h2>
+  <p>These rules govern every route, whichever references it loads — the behavioral spine, condensed.</p>
   <ul class="rules">
-    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>TODO law 1</b>TODO one to two sentences.</li>
-    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-sliders-horizontal"/></svg>TODO law 2</b>TODO one to two sentences.</li>
-    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-gauge"/></svg>TODO law 3</b>TODO one to two sentences, as a full-width capstone if it's the closing rule.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-braces"/></svg>Contract-first</b>Every dataset and event ships with an explicit schema, version, and evolution rule. Producers owe backward-compatible, notified evolution; consumers owe explicit requirements. The durable primitive under the "data contracts" brand is write-audit-publish + quality checks — teach the discipline, not the buzzword.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>Trust is a gate, not a dashboard ⭐</b>Untested data is broken data. Floor: every PK gets <code>unique</code>+<code>not_null</code>. Validate at ingestion and quarantine violations — never silently drop or accept. Rule tests catch known unknowns; only anomaly baselines catch unknown unknowns — you need both.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-coins"/></svg>Small-data-first</b>Default to a single node (DuckDB/Postgres) until measured pain; a distributed system must beat one laptop thread (COST) before its complexity is justified. Streaming needs a genuine sub-minute or event-driven requirement, not "it feels real-time."</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-git-branch"/></svg>Narrow the DAG, widen the tables</b>Staging is 1:1 with sources, view-materialized, no joins; marts are wide and denormalized; materialization is a ladder (view → table → incremental) climbed only on measured bottlenecks.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-gauge"/></svg>One metric, one definition</b>The semantic layer has exactly one job: a single authoritative definition per metric, consumed by every tool and agent. Two tools computing "revenue" differently is a failed layer.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-lock"/></svg>Governance at the platform layer</b>PII masking is enforced in the warehouse — app-layer redaction is bypassed by any query. Erasure honors Art.17 exceptions via tombstone + scheduled hard-delete. Consent gates collection, and "denied" is tested, not assumed.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg>No experiment read before SRM</b>Assignment is deterministic and salted; monitoring is peek-safe (confidence sequences/mSPRT) or pre-registered. A surprising result is investigated before it is believed (Twyman's Law).</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-refresh-cw"/></svg>Retrieval-first / anti-staleness</b>Tool versions, warehouse prices, spec revisions, and licenses churn quarterly. Every volatile fact is date-stamped with a re-verify pointer; read the LICENSE file, never a repo's API license field. Carry <code>volatile_facts</code> into the handoff.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-scissors"/></svg>Subtract the buzzword</b>The field debates abstractions more than it implements them. Name the durable primitive under each brand — mesh → ownership; contracts → write-audit-publish; modern data stack → a database and some SQL — and recommend the primitive.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-tag"/></svg>Distinguish facts, decisions, assumptions &amp; proposals</b>Preserve upstream decisions and user constraints, or flag the conflict explicitly; prefer repository and artifact evidence over generic defaults; state unknowns as TBD rather than inventing a value.</li>
   </ul>
 </section>
 
-<section id="pick">
-  <h2><svg class="lu" aria-hidden="true"><use href="#lu-clipboard-list"/></svg>Pick by job</h2>
-  <p>The SKILL.md is a router — load only the reference your current job needs. A condensed cut of the full table:</p>
-  <div class="tblwrap"><table>
-    <tr><th>I need to…</th><th>Read</th></tr>
-    <tr><td>TODO job 1</td><td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/example.md">example.md</a></code></td></tr>
-    <tr><td>TODO job 2</td><td><code><a href="https://github.com/gabros20/data-skill/blob/main/skills/data/references/example.md">example.md</a></code></td></tr>
-  </table></div>
-  <p style="margin-top:12px">Full table: <a href="https://github.com/gabros20/data-skill/blob/main/skills/data/SKILL.md#route-before-acting">SKILL.md</a>.</p>
-  <div class="note"><b>Complementary, not duplicated:</b> TODO — name the adjacent skills this one hands off to instead of duplicating.</div>
+<section id="artifacts">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-file-check"/></svg>What a pass produces</h2>
+  <p>data's deliverable is a working data asset plus the decision record behind it, closed on a trust
+  gate that was <b>run, not asserted</b>. A full pass emits up to four kinds of artifact — the working
+  asset, its contract + tests, its lineage/telemetry, and the fillable checklists in
+  <a href="https://github.com/gabros20/data-skill/tree/main/skills/data/assets">assets/</a> — plus the
+  machine-readable <code>handoff.yaml</code> companion when downstream work is expected. Each records
+  the decision and options, the trade-off accepted (including what was <i>removed</i>), and — for any
+  version/price/license fact — the date it was verified and how to re-verify it.</p>
+  <div class="vloop" aria-label="the data core workflow loop">
+    <div class="vstep"><span class="n">phase 1</span><span class="t"><svg class="lu ok" aria-hidden="true"><use href="#lu-file-input"/></svg>inspect</span><span class="d">request, codebase, upstream artifacts</span></div>
+    <div class="vstep"><span class="n">phase 2</span><span class="t"><svg class="lu ok" aria-hidden="true"><use href="#lu-route"/></svg>route</span><span class="d">one job · ≤1 base · +regulated</span></div>
+    <div class="vstep"><span class="n">phase 3</span><span class="t"><svg class="lu ok" aria-hidden="true"><use href="#lu-refresh-cw"/></svg>re-verify</span><span class="d">volatile tool/price/license facts, live</span></div>
+    <div class="vstep"><span class="n">phase 4</span><span class="t"><svg class="lu ok" aria-hidden="true"><use href="#lu-scissors"/></svg>produce</span><span class="d">concrete pick + what-NOT, subtract</span></div>
+    <div class="vstep"><span class="n">phase 5</span><span class="t"><svg class="lu ok" aria-hidden="true"><use href="#lu-shield-check"/></svg>prove</span><span class="d">the trust gate appropriate to the artifact</span></div>
+  </div>
+  <div class="artgrid">
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-git-branch"/></svg>The working data asset</h3>
+      <span class="file">dbt/SQLMesh project · tracking plan · pipeline config</span>
+      <p>The pipeline, contract, or plan itself — <b>the implementation, not a plan</b> — wired to the chosen surface.</p>
+    </div>
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>Contract + DQ suite</h3>
+      <span class="file">assets/data-contract-starter.odcs.yaml · dq-check-matrix.md</span>
+      <p>The ODCS contract and the DQ suite — PK floor + known/unknown-unknowns layered, <b>run, not asserted</b>.</p>
+    </div>
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-search-check"/></svg>Lineage + telemetry</h3>
+      <span class="file">OpenLineage facets · catalog config · freshness/cost hooks</span>
+      <p>The lineage graph and the freshness/cost telemetry hooks — <b>instrumented, ready for operate to monitor</b>.</p>
+    </div>
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-list-checks"/></svg>Decision checklists</h3>
+      <span class="file">tracking-plan-starter · schema-compatibility-cheatsheet · warehouse-cost-checklist · pii-audit-checklist</span>
+      <p>Fillable checklists for the tracking plan, schema compatibility, platform cost, and PII audit — <b>the record behind the call</b>.</p>
+    </div>
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-git-fork"/></svg>handoff.yaml + volatile_facts</h3>
+      <span class="file">assets/handoff.yaml · references/handoff.md</span>
+      <p>The routing index into the asset, its contract, and its telemetry — carrying <b><code>volatile_facts</code></b> so frozen tool/price/license numbers can't leak.</p>
+    </div>
+  </div>
 </section>
 
-<section id="refs">
-  <h2><svg class="lu" aria-hidden="true"><use href="#lu-files"/></svg>Reference map</h2>
-  <p>TODO: how many references, grouped by the stage/strategy they serve. Every one is copy-pasteable rather than abstract — the whole point of the router is that you never read all of them at once.</p>
-  <dl class="refmap">
-    <div class="refrow">
-      <dt class="reflabel"><svg class="lu" aria-hidden="true"><use href="#lu-sliders-horizontal"/></svg>TODO stage 1<span class="ct">1</span></dt>
-      <dd class="refchips"><span class="ref"><code>example.md</code></span></dd>
+<section id="handoff">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-git-fork"/></svg>The handoff seams</h2>
+  <p>data consumes <b>architecture</b>'s artifacts upstream — data-classification decisions, NFR
+  budgets, build-vs-buy on ingestion/warehouse — and, when downstream work is expected, emits a
+  compact <code>handoff.yaml</code> beside the working asset: a routing <i>index</i> into it, never a
+  copy. The clearest seam to name explicitly is the three-way retrieval seam shared with <b>ai</b> and
+  <b>backend</b> around a RAG system.</p>
+
+  <h3 style="font-family:ui-monospace,Menlo,monospace; font-size:15px; margin:24px 0 4px; color:var(--ink)">The RAG three-way seam</h3>
+  <p>Retrieval <b>behavior</b> (chunking, fusion, rerank, retrieval eval) is <b>ai</b>'s. The vector
+  store <b>as served infrastructure</b> (deployment, connection pooling, backup, uptime) is
+  <b>backend</b>/<b>operate</b>'s. The vector store <b>and LLM traces as governed datasets</b> — the
+  ingestion pipeline, source-of-truth lineage, PII classification, access control on what gets
+  indexed, and the trace/token warehouse — is <b>data</b>'s.</p>
+  <div class="rgseam">
+    <div class="rgcol"><h3><svg class="lu" aria-hidden="true"><use href="#lu-bot"/></svg>ai — behavior</h3><p>Chunking, fusion, rerank, decomposition, retrieval eval. Consumes data's vector-store schema and freshness assumptions rather than re-deriving them.</p></div>
+    <div class="rgcol"><h3><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>backend — served infra</h3><p>Deployment, connection pooling, backup, uptime of the vector store. The infrastructure data's pipeline writes into.</p></div>
+    <div class="rgcol mid"><h3><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>data — governed dataset</h3><p>Ingestion as governed ETL, source-of-truth lineage, PII classification, access control on what's indexed, the trace/token warehouse.</p></div>
+  </div>
+  <div class="note"><b>Name the layer before absorbing the complaint:</b> "the RAG app is slow" or
+  "answers are stale" can be any of the three. State which layer a given question actually belongs to
+  before doing any work at this seam.</div>
+
+  <h3 style="font-family:ui-monospace,Menlo,monospace; font-size:15px; margin:28px 0 4px; color:var(--ink)">The general handoff</h3>
+  <div class="seam">
+    <div class="seambox">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-file-check"/></svg>data builds</h3>
+<pre class="seamyaml"><span class="k">skill</span>: <span class="v">data</span>
+<span class="k">status</span>: <span class="v">complete</span>
+<span class="req">objective</span>: <span class="v">""</span>   <span style="color:var(--glyph)"># only required field</span>
+<span class="k">artifacts_created</span>: <span class="v">[tracking-plan,</span>
+  <span class="v">data-contract, pipeline-config, dq-suite]</span>
+<span class="k">decisions</span>: · <span class="k">assumptions</span>: · <span class="k">constraints</span>:
+<span class="k">volatile_facts</span>: <span class="v">[tool, price, license +</span>
+  <span class="v">date + re-verify pointer]</span>
+<span class="k">recommended_next</span>: <span class="v">frontend · backend</span>
+  <span class="v">· ai · quality · operate · growth</span></pre>
     </div>
-  </dl>
-  <p style="margin-top:16px">Browse the full set: <a href="https://github.com/gabros20/data-skill/tree/main/skills/data/references">skills/data/references/</a>.</p>
+    <div class="seamarrows"><span>→</span><span>→</span></div>
+    <div class="downstream">
+      <div class="seambox mid">
+        <h3><svg class="lu" aria-hidden="true"><use href="#lu-git-branch"/></svg>frontend · backend</h3>
+        <p>The tracking plan / event contract to emit against, and the operational-store read contract (CDC schema, freshness SLA) their own schema changes must not silently break.</p>
+      </div>
+      <div class="seambox mid">
+        <h3><svg class="lu" aria-hidden="true"><use href="#lu-bot"/></svg>ai</h3>
+        <p>The vector-store/dataset schema and freshness cadence a retrieval design can assume is current — and how it's kept that way.</p>
+      </div>
+      <div class="seambox mid">
+        <h3><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>quality · operate · growth</h3>
+        <p>The DQ suite as a starting point for independent verification, the freshness/cost telemetry hooks to monitor, and the SRM/assignment guarantees an experiment can trust.</p>
+      </div>
+    </div>
+  </div>
+  <p class="seamnote"><svg class="lu" aria-hidden="true"><use href="#lu-shield-alert"/></svg><span><b>Six distinct consumers, not one.</b> Each is a consumer, not a co-author — data ships the contract, pipeline, and DQ suite; it does not write UI instrumentation, own the operational store, design retrieval behavior, run the independent compliance audit, own the monitoring dashboard, or design the experiment. Only <code>objective</code> is required; every other field may be empty. Never silently invoke a sibling skill; name it in <code>recommended_next</code>.</span></p>
 </section>
 
 <section id="start">
   <h2><svg class="lu" aria-hidden="true"><use href="#lu-file-input"/></svg>Start here</h2>
-  <p>Install once. It's a plain <code>SKILL.md</code> router — no flags, no config, no scripts —
-  so it activates on natural-language phrasing (TODO: a couple of real trigger examples) rather
+  <p>Install once. It's a plain <code>SKILL.md</code> router — no flags, no config, no scripts — so it
+  activates on natural-language phrasing ("write a data contract," "add DQ tests with a PK floor,"
+  "pick a sync strategy," "govern this PII field," "check SRM before trusting this experiment") rather
   than a fixed command.</p>
-  <div class="term"><span class="c"># skills.sh ecosystem</span>
-npx skills add gabros20/data-skill
+  <div class="term"><span class="c"># skills.sh ecosystem (installs globally to supported clients)</span>
+npx skills add gabros20/data-skill -g -y
 
 <span class="c"># clone + installer (per-host targets)</span>
-git clone https://github.com/gabros20/data-skill && cd data-skill
-./install.sh codex   <span class="c"># or: claude | agents | cursor | antigravity | opencode | grok | hermes | all</span>
+git clone https://github.com/gabros20/data-skill &amp;&amp; cd data-skill
+./install.sh codex   <span class="c"># or: claude | cursor | antigravity | opencode | grok | hermes | agents | all</span>
 
-<span class="c"># use</span>
-<span class="p">/data</span> TODO — a real, short invocation example
-<span class="p">/data</span> TODO — a second real, short invocation example</div>
+<span class="c"># use — natural language, any host</span>
+<span class="p">/data</span> design a tracking plan for the checkout flow, with identity resolution across anon/known users
+<span class="p">/data</span> add a DQ suite to the orders mart — PK floor, freshness check, PR-time blast-radius diff
+<span class="p">/data</span> classify PII in the users table and mask it at the platform layer, not the app   <span class="c"># → + surface-regulated</span></div>
   <p style="margin-top:14px">The same install runs on any <a href="https://agentskills.io">Agent&nbsp;Skills</a>
-  host. Codex installs to <code>${CODEX_HOME:-$HOME/.codex}/skills</code>; <code>agents</code>
-  remains a separate cross-agent installation target.</p>
+  host. Codex installs to <code>${CODEX_HOME:-$HOME/.codex}/skills</code> and triggers with
+  <code>$data</code>; <code>agents</code> remains a separate cross-agent installation target.</p>
   <details class="disc">
     <summary>install targets by host</summary>
     <div>
       <div class="tblwrap"><table>
         <tr><th>host</th><th>install target</th><th>command</th></tr>
-        <tr><td class="dim">Claude Code</td><td><code>~/.claude/skills</code></td><td><code>./install.sh claude</code></td></tr>
-        <tr><td class="dim">Codex</td><td><code>${CODEX_HOME:-$HOME/.codex}/skills</code></td><td><code>./install.sh codex</code></td></tr>
-        <tr><td class="dim">Cross-agent path</td><td><code>~/.agents/skills</code></td><td><code>./install.sh agents</code></td></tr>
-        <tr><td class="dim">Cursor CLI</td><td><code>~/.cursor/skills</code></td><td><code>./install.sh cursor</code></td></tr>
-        <tr><td class="dim">Antigravity (IDE + agy)</td><td><code>~/.gemini/…/skills</code></td><td><code>./install.sh antigravity</code></td></tr>
-        <tr><td class="dim">opencode</td><td><code>~/.config/opencode/skills</code></td><td><code>./install.sh opencode</code></td></tr>
-        <tr><td class="dim">Grok Build</td><td><code>~/.grok/skills</code></td><td><code>./install.sh grok</code></td></tr>
-        <tr><td class="dim">Hermes</td><td><code>~/.hermes/skills</code></td><td><code>./install.sh hermes</code></td></tr>
+        <tr><td class="job">Claude Code</td><td><code>~/.claude/skills</code></td><td><code>./install.sh claude</code></td></tr>
+        <tr><td class="job">Codex</td><td><code>${CODEX_HOME:-$HOME/.codex}/skills</code></td><td><code>./install.sh codex</code></td></tr>
+        <tr><td class="job">Cross-agent path</td><td><code>~/.agents/skills</code></td><td><code>./install.sh agents</code></td></tr>
+        <tr><td class="job">Cursor CLI</td><td><code>~/.cursor/skills</code></td><td><code>./install.sh cursor</code></td></tr>
+        <tr><td class="job">Antigravity (IDE + agy)</td><td><code>~/.gemini/…/skills</code></td><td><code>./install.sh antigravity</code></td></tr>
+        <tr><td class="job">opencode</td><td><code>~/.config/opencode/skills</code></td><td><code>./install.sh opencode</code></td></tr>
+        <tr><td class="job">Grok Build</td><td><code>~/.grok/skills</code></td><td><code>./install.sh grok</code></td></tr>
+        <tr><td class="job">Hermes</td><td><code>~/.hermes/skills</code></td><td><code>./install.sh hermes</code></td></tr>
       </table></div>
-      <p style="margin-top:12px">Prefer <code>npx skills add gabros20/data-skill</code> when you have Node — it maps supported clients itself.</p>
+      <p style="margin-top:12px">Prefer <code>npx skills add gabros20/data-skill -g -y</code> when you have Node — it maps supported clients itself.</p>
     </div>
   </details>
   <details class="disc">
     <summary>what's in the repo</summary>
     <div>
-      <div class="files"><span class="hl">skills/data/</span>          <span class="d">the skill: SKILL.md (router) + references/</span>
+      <div class="files"><span class="hl">skills/data/</span>              <span class="d">the skill: SKILL.md (router) + 15 references/ + assets/</span>
 <span class="hl">docs/</span>                      <span class="d">installation · usage · recipes</span>
-<span class="hl">site/</span>                      <span class="d">optional guide — deploys to data-skill.vercel.app</span>
+<span class="hl">site/</span>                      <span class="d">this guide — deploys to data-skill.vercel.app</span>
 install.sh                 <span class="d">installer (claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all)</span>
 README.md · CHANGELOG.md · LICENSE</div>
       <p>More docs: <a href="https://github.com/gabros20/data-skill/blob/main/docs/installation.md">docs/installation.md</a> ·
@@ -350,17 +865,16 @@ README.md · CHANGELOG.md · LICENSE</div>
 </section>
 
 <footer>
-  <span><span class="mono">/data</span> — Make product and business data trustworthy, governed, usable</span>
+  <span><span class="mono">/data</span> — Make product and business data trustworthy, governed, usable.</span>
   <span><a href="https://github.com/gabros20/data-skill">github.com/gabros20/data-skill</a> · <a href="/llms.txt">llms.txt</a> · MIT</span>
 </footer>
 </div>
 <script>
 (function () {
-  // Progressive enhancement over the static .arcline fallback above: swaps in the
-  // hero Remotion video (light/dark). On any load error it removes the
-  // slot and leaves the static arc line in place.
+  // Progressive enhancement over the static router fallback above: swaps in the hero Remotion
+  // video (light/dark). On any load error it removes the slot, leaving the static router in place.
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  if (innerWidth < 720) return; // the static line reads better on phones
+  if (innerWidth < 720) return; // the static router reads better on phones
   var wrap = document.getElementById("vidwrap");
   if (!wrap || !document.createElement("video").canPlayType) return;
   var mq = matchMedia("(prefers-color-scheme: dark)");
@@ -370,7 +884,7 @@ README.md · CHANGELOG.md · LICENSE</div>
   v.autoplay = true;
   v.playsInline = true;
   v.setAttribute("playsinline", "");
-  v.setAttribute("aria-label", "TODO: describe what the hero animation shows.");
+  v.setAttribute("aria-label", "The data skill in motion: a request arrives, the retrieval-first gate re-verifies a tool, price, or license against the live source, the faceted router composes one primary job with at most one base surface plus the additive regulated overlay, the quality-and-testing flagship shows the convergent DQ taxonomy with known and unknown unknowns, a full pass produces a governed data asset with its contract and telemetry while subtracting the buzzword, and a handoff.yaml carrying volatile_facts hands the governed pipeline off to frontend, backend, ai, quality, operate and growth — including the RAG three-way seam between ai's retrieval behavior, backend's served infrastructure, and data's governed datasets.");
   v.addEventListener("loadeddata", function () { document.body.classList.add("has-vid"); });
   v.addEventListener("error", function () { wrap.remove(); });
   function apply() {

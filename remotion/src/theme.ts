@@ -16,7 +16,7 @@ export const themes = {
     bad: "#b3403a",
     codeBg: "#eef1f7",
     glyph: "#8391ad",
-    dim: "#8146c9", // the "structure/dimension" violet (--tok-dim)
+    reg: "#0e8f9c", // the regulated-overlay teal (--tok-reg) — complementary to the amber spine
     // wireframe-gray fill: a touch flatter than codeBg so the designed→undesigned jump reads
     wire: "#e7eaf1",
   },
@@ -34,7 +34,7 @@ export const themes = {
     bad: "#e5726c",
     codeBg: "#141824",
     glyph: "#5d6a85",
-    dim: "#b98aef",
+    reg: "#4fd1de",
     wire: "#202634",
   },
 } as const;

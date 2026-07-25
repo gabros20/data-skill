@@ -2,14 +2,24 @@
 
 > Make product and business data trustworthy, governed, usable. Installs as an agent skill.
 
-TODO — one paragraph: what problem this replaces, the workflow it runs (stages/strategies, in
-order), and what "read only what you need" the router gives you. Claude Code is the reference
-host; it's plain Agent Skills format (agentskills.io), so it installs on Codex, Cursor,
-Antigravity, opencode, Grok Build, and Hermes too.
+Ask an agent to "track this event" or "add a data pipeline" without this skill and it ships an
+ad-hoc payload with no naming grammar, no schema, no test — a warehouse table nobody trusts and
+nobody can safely change. `data` is a faceted agent skill for the **analytical and governed data
+plane**: event tracking and contracts, ingestion/movement, transformation and modeling, the
+metrics/semantic layer and BI, data quality and testing, lineage and observability,
+governance/PII/retention, experiment measurement, and platform/cost. Every request routes through
+one primary job (of ten) composed with at most one base surface (of four), plus the additive
+`surface-regulated` overlay when GDPR/CCPA/HIPAA/SOC2 applies — never the whole reference library
+at once. Trust is a gate, not a dashboard: the convergent DQ taxonomy (9 core buckets + PR-diff +
+PII), a PK-uniqueness floor on every model, and a PR-time blast-radius diff before merge. Every
+tool version, warehouse price, and license is re-verified against the live source and date-stamped
+— read the LICENSE file, never a repo's API license field. Claude Code is the reference host; it's
+plain Agent Skills format (agentskills.io), so it installs on Codex, Cursor, Antigravity, opencode,
+Grok Build, and Hermes too.
 
 ## Install
 
-- npm/skills.sh: `npx skills add gabros20/data-skill`
+- npm/skills.sh: `npx skills add gabros20/data-skill -g -y`
 - Clone + installer (per-host targets: claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all): `git clone https://github.com/gabros20/data-skill && cd data-skill && ./install.sh codex`
 - Manual copy: `cp -R skills/data ~/.claude/skills/data`
 
@@ -23,8 +33,28 @@ Antigravity, opencode, Grok Build, and Hermes too.
 
 ## Reference inventory (`skills/data/references/`)
 
-- `example.md` — TODO: what job this reference answers.
+Primary jobs (ten):
+- `event-taxonomy-and-tracking.md` — naming grammar, tracking plan, instrumentation QA, consent-aware collection.
+- `data-contracts-and-schema-evolution.md` — ODCS contract shape, 7 compatibility modes, write-audit-publish.
+- `ingestion-and-movement.md` — sync-strategy decision table, CDC + outbox, destructive-action gating.
+- `transformation-and-modeling.md` — narrow-the-DAG/widen-the-tables, materialization ladder, Kimball/OBT/Vault.
+- `metrics-semantics-and-bi.md` — one-authoritative-definition semantic layer, code-first vs GUI BI, NL-to-data.
+- `quality-and-testing.md` ⭐ — the convergent DQ taxonomy, known/unknown unknowns, PK floor, PR-time blast-radius diff.
+- `lineage-and-observability.md` — OpenLineage model, five pillars/data downtime, catalog choice.
+- `governance-pii-and-retention.md` — platform-layer masking, Art.17-with-exceptions erasure, retention.
+- `experiment-measurement-foundations.md` — SRM-before-trust, deterministic salted assignment, CUPED.
+- `platform-and-cost.md` — small-data-first (COST rule), orchestrator choice, the licensing map.
+
+Surface overlays (five):
+- `surface-product-analytics.md` — default/start-simplest; tracking plan as spine.
+- `surface-warehouse-platform.md` — central platform; ELT + semantic layer + BI serving.
+- `surface-operational-activation.md` — CDC/reverse-ETL, freshness SLAs, idempotency.
+- `surface-ai-data-plane.md` — RAG corpus as governed ETL, point-in-time correctness, eval datasets.
+- `surface-regulated.md` ⭐ (additive) — GDPR/CCPA/HIPAA/SOC2 consent gating, masking, erasure ops.
+
+Pipeline:
+- `handoff.md` — standalone vs pipeline behavior and the `handoff.yaml` companion (with `volatile_facts`).
 
 ## Optional
 
-- [Visual guide](https://data-skill.vercel.app): the workflow, boundaries, and reference map on one page.
+- [Visual guide](https://data-skill.vercel.app): the router, the quality-and-testing flagship, the RAG three-way seam, and the reference map on one page.
