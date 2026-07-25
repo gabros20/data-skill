@@ -1,37 +1,69 @@
-# Agent guide — creating an independent skill repository
+# Agent guide — `data` (Data Engineering)
 
-This repository is the source template for one `<skill>-skill` repository. The runtime skill name
-remains short and lives under `skills/<skill>/`; repository and plugin names use the `-skill`
-suffix. Work [TEMPLATE-CHECKLIST.md](TEMPLATE-CHECKLIST.md) top to bottom after initialization.
+This repository is the released `data-skill`: an installable agent skill for making product and
+business data trustworthy, governed, and usable. The runtime skill lives under `skills/data/`; the
+repository and Codex plugin use the `-skill` suffix. Read this before editing.
 
-## Detect state first
+## Ownership boundary (non-negotiable)
 
-- `skills/data/` exists in the actual `gabros20/skill-template` repository: maintain the
-  source template and run `scripts/check-sync` to exercise the initializer regression test.
-- `skills/data/` exists anywhere else: stop and run `scripts/init`; the gate must fail
-  until this happens.
-- `skills/<real-name>/` exists with the checklist: populate and validate the derived repository.
-- No checklist: treat it as an ordinary released skill repository and follow its local README.
+`data` owns the **analytical and governed data plane** — data treated as a product, distinct from
+`backend` (data as application state) and `ai` (data as model context). It owns the event contract
+and tracking plan, data contracts and schema evolution, ingestion and movement, transformation and
+modeling, the metrics/semantic layer and BI, data quality and testing, lineage and observability,
+governance/PII/retention, experiment measurement validity, and platform/cost choices. It does **not**
+own:
+
+- OLTP schema design, app queries, migrations, serving APIs, the DB/vector store *as served infra*
+  → **backend**
+- retrieval *behavior* (chunk/rerank tuning), prompts, model evals, agent construction → **ai**
+- designing or interpreting an A/B experiment, picking the OEC, growth loops → **growth**
+- which outcomes/metrics matter to the business → **product**
+- data-flow boundaries, storage strategy, NFR budgets, threat model of the data platform →
+  **architecture**
+- emitting the events in client/server code → **frontend** / **backend**
+- independent verification / sign-off before release → **quality**
+- deploying pipelines, running the monitoring platform, incident response infra → **operate**
+- deterministic multi-system business processes, even when one step touches the warehouse →
+  **automation**
+
+`data` *references* those substrates; it does not re-teach or override them. It works standalone and
+never silently invokes a sibling skill.
+
+## Non-negotiable invariants
+
+1. **Retrieval-first / anti-staleness — the flagship.** Warehouse prices, tool versions, spec
+   revisions, and licenses churn quarterly. Every volatile fact is date-stamped and re-verified
+   against the live source before use — read the LICENSE *file*, never a repo's API license field;
+   never freeze a volatile fact or assert one as "verified-live" inside a static doc. Treat any
+   pricing/version table (including this repo's) as illustrative until re-checked.
+2. **Trust is a gate, not a dashboard.** Untested data is broken data. Every primary key gets
+   `unique` + `not_null` as a floor; validate at ingestion and quarantine violations. Rule tests
+   catch known unknowns, statistical/anomaly baselines catch unknown unknowns — ship both layers.
+3. **Small-data-first.** Default to a single node until measured pain; a distributed system must
+   beat one laptop thread (COST) before its complexity is justified.
+4. **Contract-first + one-metric-one-definition.** Every dataset/event ships an explicit schema,
+   version, and evolution rule; every metric has exactly one authoritative definition, consumed by
+   every tool and agent.
+5. **Verify-and-subtract, not just assemble.** Every recommendation names what to build, what NOT to
+   build, and what to remove. Cap each pass at 3–5 decisions.
 
 ## Required behavior
 
-1. Run the generic `scripts/check-sync` gate before specialized repository checks. Never replace
-   packaging and navigation validation with domain-specific assertions.
-2. Keep runtime frontmatter to `name` and `description`. Keep versions and repository metadata in
-   `.codex-plugin/plugin.json`, `CHANGELOG.md`, tags, and releases.
-3. Keep `SKILL.md` as the direct router. References are flat, directly linked, self-describing, and
-   loaded only when their observable conditions apply.
-4. Keep repository documentation, evaluation data, release files, and optional site assets outside
-   `skills/<name>/`.
-5. Make standalone behavior complete. Recommend adjacent skills without silently invoking them.
-6. Add deterministic scripts only for fragile or repeated mechanics and execute them in tests.
-7. Treat README as the primary storefront. Site and Remotion profiles are optional publishing
-   work — but when kept, follow the [site/README.md](site/README.md) design brief: design the
-   sections, components, and hero visualization for this skill's own mental model inside the
-   shared family chrome and accent identity. Never ship the skeleton with its `TODO`s filled.
-8. Release through matching plugin version, changelog entry, tag, and GitHub Release, and
-   configure the GitHub About area (family-style description, canonical site alias as homepage,
-   base + domain topics). Do not put a version string back into `SKILL.md`.
+1. Run `scripts/check-sync` (and `scripts/lint-skill`) before any release; never replace the generic
+   gate with domain-only checks.
+2. Keep runtime frontmatter to `name` and `description`. Versions/metadata live in
+   `.codex-plugin/plugin.json`, `CHANGELOG.md`, tags, and releases — never in `SKILL.md`.
+3. Keep `SKILL.md` the direct router: one primary job × ≤1 base surface (+ additive regulated
+   overlay), plus the "Not this skill →" decline table. References are flat, directly linked,
+   self-describing, loaded only when their conditions apply.
+4. Every reference begins with `Purpose / Read when / Skip when / Inputs / Produces`; add a
+   `## Contents` when it exceeds ~100 lines. Dense is acceptable; some refs intentionally exceed the
+   2,500-token soft ceiling.
+5. Exhaustive-coverage artifacts (DQ matrices, PII audits, compatibility tables) are uniform tables
+   with a self-audit count, never a narrative.
+6. Keep repository docs, eval fixtures, research, and site assets outside `skills/data/`.
+7. Release through matching plugin version, changelog entry, tag, and GitHub Release; set the GitHub
+   About area (family-style description, canonical site alias as homepage, base + domain topics).
 
-Do not mark the repository complete merely because structural lint passes. Activation, traversal,
-and representative output evaluations must also show that the skill changes agent behavior usefully.
+Do not mark the repository complete because structural lint passes. Activation, traversal, and output
+evaluations must show the skill changes agent behavior usefully.

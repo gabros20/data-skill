@@ -6,7 +6,9 @@ Install the `data` runtime pack from the independently versioned
 ## Prerequisites
 
 - An Agent Skills-compatible client.
-- TODO: Add only real skill-specific tools, credentials, or runtime requirements.
+- No skill-specific credentials or tools are required. `data` is warehouse- and stack-agnostic; it
+  recommends fetching current pricing/version/license docs at build time (retrieval-first) but ships
+  no keys.
 
 ## Install with skills.sh
 
