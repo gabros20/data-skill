@@ -1,12 +1,57 @@
 [
   {
-    "id": "positive-explicit",
-    "prompt": "Use $data to TODO: add a realistic in-scope request.",
+    "id": "positive-tracking-plan",
+    "prompt": "Use $data to define our event naming convention and build a tracking plan before engineering instruments anything.",
     "should_trigger": true
   },
   {
-    "id": "negative-near-miss",
-    "prompt": "TODO: add a realistic request owned by the closest neighboring skill.",
+    "id": "positive-data-contract",
+    "prompt": "We need a contract between the orders service and the warehouse team with a schema evolution rule that won't silently break consumers.",
+    "should_trigger": true
+  },
+  {
+    "id": "positive-sync-strategy",
+    "prompt": "Set up ELT from Postgres into the warehouse and pick the right sync strategy — some tables need CDC, some don't.",
+    "should_trigger": true
+  },
+  {
+    "id": "positive-dbt-modeling",
+    "prompt": "Restructure our dbt project into staging/intermediate/marts and fix the join fan-out in our core models.",
+    "should_trigger": true
+  },
+  {
+    "id": "positive-dq-gate",
+    "prompt": "Add data quality tests and anomaly detection so a broken pipeline never silently ships to the dashboard.",
+    "should_trigger": true
+  },
+  {
+    "id": "positive-pii-governance",
+    "prompt": "Classify PII columns in the warehouse and enforce masking before analysts get query access.",
+    "should_trigger": true
+  },
+  {
+    "id": "negative-decline-to-backend",
+    "prompt": "Host the vector store and expose it as an authenticated API for our app to call in production.",
+    "should_trigger": false
+  },
+  {
+    "id": "negative-decline-to-growth",
+    "prompt": "Design my A/B test — pick the variants, the hypothesis, and the rollout plan for the new pricing page.",
+    "should_trigger": false
+  },
+  {
+    "id": "negative-decline-to-ai",
+    "prompt": "Improve retrieval quality for our RAG assistant — better chunking, hybrid search, and reranking.",
+    "should_trigger": false
+  },
+  {
+    "id": "negative-decline-to-frontend",
+    "prompt": "Build the checkout UI that calls our existing orders API and shows a confirmation screen.",
+    "should_trigger": false
+  },
+  {
+    "id": "negative-decline-to-quality",
+    "prompt": "Independently red-team and sign off our data pipeline as a release gate before we ship.",
     "should_trigger": false
   }
 ]

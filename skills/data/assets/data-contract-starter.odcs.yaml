@@ -1,0 +1,115 @@
+# Data contract starter — Open Data Contract Standard (ODCS) shape.
+# Illustrative skeleton, not a validated instance. ODCS is Bitol/Linux Foundation AI & Data
+# governed, license Apache-2.0. This file targets the section list and field names of ODCS
+# v3.1.0 as documented in the skill's research (as-of 2026-07-25) — RE-VERIFY the exact spec
+# version and field set against https://bitol-io.github.io/open-data-contract-standard/ before
+# treating this as authoritative; the older "Data Contract Specification" (DCS) is officially
+# deprecated in favor of ODCS, so don't confuse the two shapes.
+# Source: references/data-contracts-and-schema-evolution.md
+
+apiVersion: v3.1.0                    # re-verify current version before shipping
+kind: DataContract
+id: ""                                 # stable contract id, e.g. "orders-events-v1"
+name: ""                               # human name
+version: 1.0.0
+status: draft                          # proposed | draft | active | deprecated | retired
+tenant: ""
+domain: ""                             # owning business domain (data-mesh sense)
+tags: []
+
+description:
+  purpose: ""                          # what this dataset is for
+  limitations: ""                      # known scope limits — don't overclaim coverage
+  usage: ""                            # intended consumption pattern
+
+authoritativeDefinitions:
+  - url: ""                            # link to the canonical business-definition doc/wiki
+    type: businessDefinition
+
+# --- Schema -----------------------------------------------------------------
+schema:
+  - name: ""                           # table/topic/dataset name
+    physicalName: ""
+    logicalType: object
+    properties:
+      - name: user_id
+        logicalType: string
+        physicalType: varchar
+        required: true
+        unique: false
+        primaryKey: false
+        classification: internal       # public | internal | confidential | restricted
+        pii: false
+      - name: email
+        logicalType: string
+        physicalType: varchar
+        required: true
+        pii: true                      # flag PII explicitly — drives masking/retention downstream
+        classification: restricted
+      - name: revenue
+        logicalType: number
+        physicalType: decimal(12,2)
+        required: false
+        pii: false
+        classification: internal
+
+# --- Data quality — four rule tiers (ODCS decision axis) ---------------------
+# Text = human description only. Library = predefined metric (nullValues, missingValues,
+# invalidValues, duplicateValues, rowCount) with mustBe/mustBeLessThan/mustBeGreaterThan.
+# SQL = custom query. Custom = vendor-specific (Soda / Great Expectations / dbt tests / Monte Carlo).
+quality:
+  - type: library
+    metric: rowCount
+    mustBeGreaterThan: 0
+  - type: library
+    property: user_id
+    metric: nullValues
+    mustBe: 0
+  - type: text
+    description: "email must be a syntactically valid address"
+  - type: sql
+    query: "SELECT COUNT(*) FROM {table} WHERE revenue < 0"
+    mustBe: 0
+
+# --- SLA ----------------------------------------------------------------------
+# driver is the decision axis: regulatory | analytics | operational — determines who can waive
+# a breach and how fast it must be remediated.
+slaProperties:
+  - property: latency
+    value: 24
+    unit: h
+    element: "load to consumption"
+    driver: analytics
+  - property: availability
+    value: 99.5
+    unit: percent
+    driver: operational
+  - property: retention
+    value: 400
+    unit: d
+    driver: regulatory
+
+support:
+  - channel: ""                        # e.g. Slack channel, on-call rotation
+    tool: ""
+    scope: interactive
+
+team:
+  - role: dataProductOwner
+    name: ""
+  - role: dataSteward
+    name: ""
+
+# --- Custom & other properties ------------------------------------------------
+customProperties:
+  - property: piiReviewOwner
+    value: ""
+
+# Notes:
+# - The old `dataProduct` field is deprecated as of v3.1.0 — don't carry it forward from an older
+#   template.
+# - `datacontract-cli` (MIT) or equivalent can run `test` against the live dataset so the contract
+#   IS the executable test, not just documentation — wire that in before calling this "enforced."
+# - Default to the strictest compatible schema-registry mode you can afford (see
+#   schema-compatibility-cheatsheet.md) — this contract's schema section is the human-readable
+#   twin of that machine-enforced mode, not a replacement for it.

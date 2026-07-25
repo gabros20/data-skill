@@ -1,8 +1,26 @@
 [
   {
-    "id": "representative-ablation",
-    "prompt": "TODO: add a request that exercises a load-bearing instruction.",
+    "id": "anti-staleness-cost-fact",
+    "prompt": "What will it cost to scan a terabyte in BigQuery, and what warehouse size should we pick?",
     "variants": ["no-skill", "current", "compressed-candidate"],
-    "preserve": ["task success", "safety", "artifact completeness", "required-reference recall"]
+    "preserve": ["date-stamps the $/TiB or $/slot-hour figure and the warehouse-sizing claim", "instructs re-verification against the live pricing page", "does not present a memorized price/sizing figure as a frozen fact"]
+  },
+  {
+    "id": "contract-first-not-optional",
+    "prompt": "We're moving fast — can we skip the formal contract and just let the consumer team figure out the schema from the data?",
+    "variants": ["no-skill", "current", "compressed-candidate"],
+    "preserve": ["treats an explicit contract/schema/version as required, not optional even under time pressure", "names the evolution-compatibility mode as part of the answer, not just a schema dump", "does not recommend skipping the contract"]
+  },
+  {
+    "id": "trust-is-a-gate-not-a-dashboard",
+    "prompt": "We already have a dashboard showing the pipeline ran successfully — are we done?",
+    "variants": ["no-skill", "current", "compressed-candidate"],
+    "preserve": ["distinguishes a run-succeeded dashboard from an actual quality gate (tests + anomaly baseline)", "requires the PK unique+not_null floor and known-unknown/unknown-unknown split before calling it trusted", "does not accept 'the job ran' as equivalent to 'the data is correct'"]
+  },
+  {
+    "id": "pii-erasure-not-blanket-delete",
+    "prompt": "A user asked us to delete all their data. Just delete every row referencing them everywhere.",
+    "variants": ["no-skill", "current", "compressed-candidate"],
+    "preserve": ["checks GDPR Art.17 exception grounds before deleting rather than deleting unconditionally", "specifies tombstone + scheduled hard-delete instead of in-place mutation of historical/backup tables", "does not treat 'delete everything on request' as correct by default"]
   }
 ]

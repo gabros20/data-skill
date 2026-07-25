@@ -1,10 +1,64 @@
 [
   {
-    "id": "primary-artifact",
-    "prompt": "TODO: add a representative execution request.",
+    "id": "tracking-plan-artifact",
+    "prompt": "Ship a tracking plan for our checkout funnel events.",
     "assertions": [
-      "TODO: name an observable artifact requirement",
-      "TODO: name an objective validation or completion requirement"
+      "Produces a tracking-plan table (event/properties/type/owner/status), not just prose advice",
+      "Enforces one naming grammar (object-action, one casing, one tense) rather than leaving casing/tense open per event",
+      "Reserved properties (revenue/currency/value) are flagged as a contract, not left as free-form fields",
+      "States the schema evolution rule per event (e.g. MODEL-REVISION-ADDITION) so a future breaking change has a defined bump"
+    ]
+  },
+  {
+    "id": "data-contract-artifact",
+    "prompt": "Write a data contract between the payments service and the analytics warehouse.",
+    "assertions": [
+      "Produces an ODCS-shaped contract (fundamentals/schema/quality/SLA sections), not a free-text description",
+      "Schema fields carry pii/classification flags, not just name/type",
+      "Data-quality rules are assigned to one of the four ODCS tiers (text/library/sql/custom), not left as vague prose",
+      "SLA properties carry a driver (regulatory/analytics/operational), used to justify the SLA value chosen",
+      "Notes that ODCS is the current spec (not the deprecated DCS) and flags the version as something to re-verify"
+    ]
+  },
+  {
+    "id": "dq-gate-artifact",
+    "prompt": "Build the quality gate for our marts layer before the next dbt run ships.",
+    "assertions": [
+      "Covers both known-unknowns (rule tests) and unknown-unknowns (anomaly/statistical detection) — not just one",
+      "Every primary key has both unique and not_null as the non-negotiable floor",
+      "Assigns checks to a layer (staging vs marts vs all-with-history) per the where-to-run-checks convention, not everything dumped at one layer",
+      "Includes a PR-time / pre-merge blast-radius check before checks are declared complete"
+    ]
+  },
+  {
+    "id": "sync-strategy-artifact",
+    "prompt": "Recommend sync strategies for five source tables of different shapes.",
+    "assertions": [
+      "Assigns a strategy per table shape (full_refresh/incremental/append/CDC/webhook), not one strategy for everything",
+      "States the reason each table got its strategy, tied to its shape (row count, bookmark column, append-only, latency need)",
+      "Flags CDC as snapshot-then-log-tail, not infinite streaming, and calls out the new-table-CDC-lag gotcha",
+      "States the at-least-once / resumable-checkpoint invariant rather than assuming a single retry-free read"
+    ]
+  },
+  {
+    "id": "pii-audit-artifact",
+    "prompt": "Audit our warehouse for PII exposure and fix the gaps before the next access review.",
+    "assertions": [
+      "Follows classify -> tag -> platform-mask -> retention/erasure -> verify as ordered stages, not a single flat list",
+      "Masking is enforced at the platform/warehouse layer (tags/policies), not proposed as an application-layer fix",
+      "Erasure logic checks GDPR Art.17 exception grounds before deleting — does not default to 'delete everything on request'",
+      "Warehouse deletion is specified as tombstone + scheduled hard-delete, not in-place mutation of historical tables",
+      "Includes a verification step that actually tests a denied/masked path, not just a design description"
+    ]
+  },
+  {
+    "id": "warehouse-cost-artifact",
+    "prompt": "We think our warehouse bill is too high before we've even scaled — sanity-check the architecture.",
+    "assertions": [
+      "Asks workload-shape questions (measured bytes-scanned, predictability, real latency need) before recommending an architecture change",
+      "Checks whether the current design was sized against sample/dev data rather than measured production volume",
+      "Names auto-suspend and right-sizing as the first levers, before recommending architectural changes",
+      "Any $/TiB or $/slot-hour figure cited is date-stamped with an instruction to re-verify against the live pricing page"
     ]
   }
 ]

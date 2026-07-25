@@ -1,6 +1,6 @@
 {
   "name": "data-skill",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Make product and business data trustworthy, governed, usable",
   "author": {
     "name": "gabros20",
@@ -9,17 +9,28 @@
   "homepage": "https://data-skill.vercel.app",
   "repository": "https://github.com/gabros20/data-skill",
   "license": "MIT",
-  "keywords": ["agent-skill", "data"],
+  "keywords": [
+    "agent-skill",
+    "data",
+    "data-engineering",
+    "analytics",
+    "dbt",
+    "data-quality",
+    "data-contracts",
+    "tracking-plan",
+    "semantic-layer",
+    "warehouse"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Data Engineering",
     "shortDescription": "Make product and business data trustworthy, governed, usable",
-    "longDescription": "Make product and business data trustworthy, governed, usable",
+    "longDescription": "Faceted-router skill for the analytical, governed data plane: event tracking and tracking plans, data contracts and schema evolution, ingestion/CDC, transformation and modeling, metrics/semantic layer and BI, data quality and testing, lineage, governance/PII/retention, experiment measurement validity, and platform/cost decisions \u2014 vendor-neutral, decision-first, with date-stamped volatile facts and license-aware tool picks.",
     "developerName": "gabros20",
-    "category": "Productivity",
+    "category": "Developer Tools",
     "capabilities": [],
     "defaultPrompt": [
-      "Use $data to TODO: provide one short starter request."
+      "Use $data to design a tracking plan and data contract for our product events, with quality checks."
     ],
     "brandColor": "#d97706"
   }

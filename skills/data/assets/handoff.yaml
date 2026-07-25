@@ -1,0 +1,83 @@
+# data → architecture/backend/ai/frontend/quality/operate/automation/growth handoff envelope
+# Fill every field for a real run; delete these comments once filled.
+# Only `objective` is required — every other field may be empty; a consumer must tolerate it
+# absent, never treat absence as a schema violation. See references/handoff.md for field-by-field
+# meaning and the seam discipline (this file is a routing index, never a copy of the real
+# contract/warehouse-DDL/orchestration-config).
+
+handoff_version: 1
+skill: data
+status: complete              # complete | partial | blocked — see references/handoff.md
+
+objective: ""                  # one sentence: what this data build governs (surface + job)
+
+inputs_used:
+  - path: ""                    # e.g. artifacts/backend-schema.sql, artifacts/ai-retrieval-config.yaml
+    type: ""                    # e.g. operational-schema, event-source, tool-contract
+    owner: backend
+
+artifacts_created:
+  - path: ""
+    type: tracking-plan                 # event taxonomy + naming grammar + reserved-property map
+    owner: data
+  - path: ""
+    type: data-contract                 # ODCS-shaped producer/consumer contract, schema + SLA
+    owner: data
+  - path: ""
+    type: dq-suite                      # rule tests (known-unknowns) + anomaly baselines (unknown-unknowns)
+    owner: data
+  - path: ""
+    type: semantic-model                # metric definitions, one authoritative home per metric
+    owner: data
+  - path: ""
+    type: lineage-config                # OpenLineage facets / catalog wiring, freshness bound
+
+decisions: []                    # material calls made and why — e.g. "chose incremental+CDC
+                                   # over full_refresh for the orders table: row count crossed
+                                   # the resync-cost threshold"
+
+assumptions: []                   # unvalidated claims the contract/pipeline rests on — mirror any
+                                   # assumption recorded during the build, don't re-derive here
+
+constraints: []                   # hard limits respected: warehouse/engine pin, compliance regime
+                                   # (GDPR/CCPA/HIPAA/SOC2), latency budget, cost ceiling
+
+risks: []                          # pointers into a risk-register by id, or new risks surfaced
+                                    # during the build — never inline a full register here
+
+unresolved:
+  - owner: ""                      # every open question needs a named owner — an orphaned question
+    question: ""                   # with no owner never gets answered
+
+validation:
+  performed: []                     # e.g. "PK unique+not_null floor passing on all marts",
+                                      # "PR-time blast-radius diff clean", "SRM check passed
+                                      # before this experiment's read"
+  remaining: []                     # e.g. "quality's independent DQ audit not yet run",
+                                      # "anomaly baseline not yet warmed with 30d history"
+
+threat_model_border:
+  controls_implemented_by_data: []      # PII masking/classification/quarantine data implemented here
+  controls_for_quality_to_verify: []    # controls quality must verify independently, not assume covered
+
+volatile_facts:
+  - fact: ""                       # e.g. "BigQuery on-demand $/TiB", "current Airflow version",
+                                     # "Confluent Schema Registry default compatibility mode"
+    as_of: ""                       # date stamp
+    reverify_at: ""                 # e.g. "cloud.google.com/bigquery/pricing"
+
+recommended_next:
+  - skill: architecture
+    reason: ""
+  - skill: backend
+    reason: ""
+  - skill: ai
+    reason: ""
+  - skill: frontend
+    reason: ""
+  - skill: quality
+    reason: ""
+  - skill: operate
+    reason: ""
+  - skill: growth
+    reason: ""

@@ -1,8 +1,62 @@
 [
   {
-    "id": "primary-route",
-    "prompt": "TODO: add a request that selects one reference.",
-    "expected_references": ["references/example.md"],
+    "id": "event-taxonomy-naming",
+    "prompt": "Our event names are inconsistent across teams — some Title Case, some snake_case. Give us one naming grammar and enforce it.",
+    "expected_references": ["references/event-taxonomy-and-tracking.md"],
+    "forbidden_references": ["references/data-contracts-and-schema-evolution.md"]
+  },
+  {
+    "id": "contract-schema-evolution",
+    "prompt": "Define a producer-consumer contract for our orders topic and tell us which schema changes are safe to ship without breaking consumers.",
+    "expected_references": ["references/data-contracts-and-schema-evolution.md"],
     "forbidden_references": []
+  },
+  {
+    "id": "ingestion-cdc-sync",
+    "prompt": "Pick sync strategies for our Postgres tables going into the warehouse — some need near-real-time CDC, some are just small dimension tables.",
+    "expected_references": ["references/ingestion-and-movement.md"],
+    "forbidden_references": []
+  },
+  {
+    "id": "modeling-staging-marts",
+    "prompt": "Our dbt project has staging models joining five sources each — help us restructure into a clean staging-to-marts layering.",
+    "expected_references": ["references/transformation-and-modeling.md"],
+    "forbidden_references": []
+  },
+  {
+    "id": "metrics-semantic-layer",
+    "prompt": "Two dashboards show different revenue numbers for the same month. Give every tool one authoritative metric definition.",
+    "expected_references": ["references/metrics-semantics-and-bi.md"],
+    "forbidden_references": []
+  },
+  {
+    "id": "quality-tests-and-anomaly",
+    "prompt": "Set up the trust gate: known-unknown rule tests plus anomaly detection for unknown-unknowns, with a PR-time blast-radius diff before merge.",
+    "expected_references": ["references/quality-and-testing.md"],
+    "forbidden_references": []
+  },
+  {
+    "id": "governance-pii-erasure",
+    "prompt": "Classify PII in the warehouse, enforce masking at the platform layer, and handle a GDPR erasure request correctly.",
+    "expected_references": ["references/governance-pii-and-retention.md"],
+    "forbidden_references": []
+  },
+  {
+    "id": "additive-warehouse-regulated-stacking",
+    "prompt": "We're building the central analytical warehouse for a healthcare product under HIPAA and SOC2 — set up the platform with that compliance posture baked in.",
+    "expected_references": ["references/surface-warehouse-platform.md", "references/surface-regulated.md"],
+    "forbidden_references": []
+  },
+  {
+    "id": "ai-data-plane-routing",
+    "prompt": "Govern the RAG corpus ingestion as ETL and warehouse our LLM traces and token/cost data as datasets for the AI product.",
+    "expected_references": ["references/surface-ai-data-plane.md"],
+    "forbidden_references": ["references/surface-product-analytics.md"]
+  },
+  {
+    "id": "decline-to-growth-experiment-design",
+    "prompt": "Design the A/B test — pick the hypothesis, variants, and rollout percentage for the new pricing page.",
+    "expected_references": [],
+    "forbidden_references": ["references/experiment-measurement-foundations.md"]
   }
 ]
