@@ -2,6 +2,8 @@
 
 **Visual guide:** [data-skill.vercel.app](https://data-skill.vercel.app)
 
+**Family hub:** [digital-product-skill.vercel.app](https://digital-product-skill.vercel.app) — the 15-skill Digital Product family and its composer.
+
 Make **product and business data trustworthy, governed, and usable** — the event contract and
 tracking plan, data contracts and schema evolution, ingestion and movement, transformation and
 modeling, the metrics/semantic layer and BI, data quality and testing, lineage and observability,
