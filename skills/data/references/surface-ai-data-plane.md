@@ -83,7 +83,7 @@ dataset gets and PII classification at ingest (a decoupled detect→act pipeline
 decide masking/exclusion as a separate step) — a governed RAG corpus is not exempt from the same
 trust-gate discipline this skill applies everywhere else.
 
-Four details make that contract hold. **Capture the source ACL at ingest** on the same
+Four details make it hold. **Capture the source ACL at ingest** on the same
 incremental sync cursor as the content (commit records, then advance the cursor), so each chunk
 carries who may see it. **Version every derived step** — parser, chunking strategy, embedding
 model — per chunk; changing one is a re-index, never an in-place edit. **Publish a complete index
@@ -103,9 +103,9 @@ semantic conventions as the wire format when traces need to interoperate across 
 like `gen_ai.usage.total_tokens`, `gen_ai.usage.token_type`, `gen_ai.is_streaming`,
 `gen_ai.response.finish_reason`, plus vector-DB-specific attributes
 (`db.vector.query.{top_k,embeddings_count,result_count}`), give retrieval steps first-class spans
-alongside generation spans — this is the standard, not a vendor-specific log shape. SDKs that batch
-and queue traces need an explicit flush in short-lived/serverless processes, or buffered traces are
-silently lost on exit — a real gotcha, not a hypothetical.
+alongside generation spans — the standard, not a vendor log shape. SDKs that batch and queue
+traces need an explicit flush in short-lived/serverless processes, or buffered traces are silently
+lost on exit.
 
 ### 4. Point-in-time correctness
 Any feature or context served to a model must be point-in-time-correct relative to the query's
@@ -137,8 +137,8 @@ the warehouse table.
   one of retrieval-behavior / served-infrastructure / governed-dataset.
 - The corpus pipeline has a landing table, PII tagging, dedup, and a poisoning screen before
   chunking — not chunking applied directly to raw source content.
-- Each chunk carries its source ACL and parser/chunking/embedding versions; a new index version is
-  complete before queries switch to it; a revocation denies at query time before derived cleanup.
+- Chunks carry source ACL and step versions; index versions switch atomically; revocation denies
+  before cleanup.
 - Traces are queryable by Trace/Observation, with token/cost tracked per observation, not just
   logged as unstructured text.
 - Any point-in-time-sensitive feature or context is joined as-of the query time, not to the latest
@@ -157,8 +157,8 @@ the warehouse table.
 - **A document version served that's "from the future" relative to the query's as-of time** — the
   point-in-time discipline (§4) was skipped; this corrupts both eval results and production answers
   the same way feature leakage corrupts a training set.
-- **A revoked user still retrieves a document** — the index filtered on the ACL captured at ingest,
-  or revocation waited for the cleanup job; deny against the current ACL first (§2).
+- **A revoked user still retrieves a document** — deny against the current ACL first, not the
+  ingest-time one or the cleanup job (§2).
 - **Regulated content indexed before PII tagging ran** — the erasure obligation now has to reach
   into the vector index and cached traces, not just a warehouse table; catch this at ingestion (§4's
   regulated-RAG note), not after the fact.
