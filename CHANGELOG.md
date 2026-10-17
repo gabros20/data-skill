@@ -8,6 +8,11 @@ The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, 
 ## [Unreleased]
 
 ### Added
+- Queue unreleased changes here.
+
+## [0.2.0] — 2026-10-17
+
+### Added
 - **surface-ai-data-plane** §2 *RAG corpus as governed ETL* sharpened: source ACL captured at
   ingest on the incremental sync cursor; parser, chunking and embedding versioned per chunk (a
   change is a re-index); a complete index version published before queries switch, atomically;
@@ -27,4 +32,5 @@ The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, 
 - Behavioral eval suites: activation, traversal, output, compression-ablation.
 - Research corpora + synthesis in `research/` (4 channels, date-stamped 2026-07-25).
 
+[0.2.0]: https://github.com/gabros20/data-skill/releases/tag/v0.2.0
 [0.1.0]: https://github.com/gabros20/data-skill/releases/tag/v0.1.0
