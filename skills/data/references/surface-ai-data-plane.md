@@ -83,15 +83,15 @@ dataset gets and PII classification at ingest (a decoupled detect→act pipeline
 decide masking/exclusion as a separate step) — a governed RAG corpus is not exempt from the same
 trust-gate discipline this skill applies everywhere else.
 
-Four details make it hold. **Capture the source ACL at ingest** on the same
-incremental sync cursor as the content (commit records, then advance the cursor), so each chunk
-carries who may see it. **Version every derived step** — parser, chunking strategy, embedding
-model — per chunk; changing one is a re-index, never an in-place edit. **Publish a complete index
-version before switching queries**: build beside the live index, then repoint atomically (an alias
-swap — Elastic's alias "never points to both streams at the same time",
-elastic.co/docs/manage-data/data-store/aliases, 2026-10-17). **A revocation is not a deletion**:
-deny against the *current* ACL at query time first, then purge derived chunks, vectors, and caches —
-the tombstone order of [governance-pii-and-retention.md](governance-pii-and-retention.md) §3.
+**Capture the source ACL at ingest** on the content's incremental sync cursor (commit records, then
+advance it), so each chunk carries who may see it. **Version every derived step** — parser, chunking
+strategy, embedding model — per chunk; changing one is a re-index, not an in-place edit. **Publish a
+complete index version before switching queries**: build beside the live index, then repoint in one
+atomic alias swap (elastic.co/docs/manage-data/data-store/aliases, 2026-10-17). **A revocation is
+not a deletion**: update the current ACL first; then purge derived chunks, vectors, and caches
+([governance-pii-and-retention.md](governance-pii-and-retention.md) §3's tombstone order). The
+query-time filter is `ai`'s `surface-rag-app.md` "The three-way retrieval border" and `backend`'s
+`persistence.md` *"Postgres for everything" — and its traps*.
 
 ### 3. LLM traces/tokens as a warehoused dataset
 Model LLM observability data with an explicit hierarchy, not a flat log: **Trace** (one full request
@@ -137,8 +137,8 @@ the warehouse table.
   one of retrieval-behavior / served-infrastructure / governed-dataset.
 - The corpus pipeline has a landing table, PII tagging, dedup, and a poisoning screen before
   chunking — not chunking applied directly to raw source content.
-- Chunks carry source ACL and step versions; index versions switch atomically; revocation denies
-  before cleanup.
+- Chunks carry source ACL and step versions; index versions switch atomically; revocation precedes
+  cleanup.
 - Traces are queryable by Trace/Observation, with token/cost tracked per observation, not just
   logged as unstructured text.
 - Any point-in-time-sensitive feature or context is joined as-of the query time, not to the latest
@@ -157,8 +157,8 @@ the warehouse table.
 - **A document version served that's "from the future" relative to the query's as-of time** — the
   point-in-time discipline (§4) was skipped; this corrupts both eval results and production answers
   the same way feature leakage corrupts a training set.
-- **A revoked user still retrieves a document** — deny against the current ACL first, not the
-  ingest-time one or the cleanup job (§2).
+- **A revoked user still retrieves a document** — the revocation waited for cleanup instead of
+  reaching the current ACL first (§2).
 - **Regulated content indexed before PII tagging ran** — the erasure obligation now has to reach
   into the vector index and cached traces, not just a warehouse table; catch this at ingestion (§4's
   regulated-RAG note), not after the fact.
