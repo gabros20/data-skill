@@ -38,7 +38,8 @@ Inputs:
 
 Produces:
 - A RAG-corpus ingestion pipeline shaped as governed ETL: landing table, PII/poisoning screens,
-  dedup, chunking, with lineage and freshness like any other dataset.
+  dedup, chunking, source ACL and step versions per chunk, atomic index-version switch, with
+  lineage and freshness like any other dataset.
 - A trace/token warehousing schema (Trace → Observation hierarchy) queryable for cost and quality
   analysis, not just point-in-time debugging.
 - A point-in-time-correctness discipline for any feature or context served to a model.
@@ -81,6 +82,16 @@ lineage back to its source document. Give the corpus the same freshness/lineage 
 dataset gets and PII classification at ingest (a decoupled detect→act pipeline: classify first, then
 decide masking/exclusion as a separate step) — a governed RAG corpus is not exempt from the same
 trust-gate discipline this skill applies everywhere else.
+
+Four details make that contract hold. **Capture the source ACL at ingest** on the same
+incremental sync cursor as the content (commit records, then advance the cursor), so each chunk
+carries who may see it. **Version every derived step** — parser, chunking strategy, embedding
+model — per chunk; changing one is a re-index, never an in-place edit. **Publish a complete index
+version before switching queries**: build beside the live index, then repoint atomically (an alias
+swap — Elastic's alias "never points to both streams at the same time",
+elastic.co/docs/manage-data/data-store/aliases, 2026-10-17). **A revocation is not a deletion**:
+deny against the *current* ACL at query time first, then purge derived chunks, vectors, and caches —
+the tombstone order of [governance-pii-and-retention.md](governance-pii-and-retention.md) §3.
 
 ### 3. LLM traces/tokens as a warehoused dataset
 Model LLM observability data with an explicit hierarchy, not a flat log: **Trace** (one full request
@@ -126,6 +137,8 @@ the warehouse table.
   one of retrieval-behavior / served-infrastructure / governed-dataset.
 - The corpus pipeline has a landing table, PII tagging, dedup, and a poisoning screen before
   chunking — not chunking applied directly to raw source content.
+- Each chunk carries its source ACL and parser/chunking/embedding versions; a new index version is
+  complete before queries switch to it; a revocation denies at query time before derived cleanup.
 - Traces are queryable by Trace/Observation, with token/cost tracked per observation, not just
   logged as unstructured text.
 - Any point-in-time-sensitive feature or context is joined as-of the query time, not to the latest
@@ -144,6 +157,8 @@ the warehouse table.
 - **A document version served that's "from the future" relative to the query's as-of time** — the
   point-in-time discipline (§4) was skipped; this corrupts both eval results and production answers
   the same way feature leakage corrupts a training set.
+- **A revoked user still retrieves a document** — the index filtered on the ACL captured at ingest,
+  or revocation waited for the cleanup job; deny against the current ACL first (§2).
 - **Regulated content indexed before PII tagging ran** — the erasure obligation now has to reach
   into the vector index and cached traces, not just a warehouse table; catch this at ingestion (§4's
   regulated-RAG note), not after the fact.

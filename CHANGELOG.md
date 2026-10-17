@@ -8,7 +8,11 @@ The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, 
 ## [Unreleased]
 
 ### Added
-- Queue unreleased changes here.
+- **surface-ai-data-plane** §2 *RAG corpus as governed ETL* sharpened: source ACL captured at
+  ingest on the incremental sync cursor; parser, chunking and embedding versioned per chunk (a
+  change is a re-index); a complete index version published before queries switch, atomically;
+  permission revocation as deny-at-query-time against the current ACL before derived cleanup.
+  Produces, Validation and a failure mode follow; new output eval `rag-corpus-governance-artifact`.
 
 ## [0.1.0] — 2026-07-25
 

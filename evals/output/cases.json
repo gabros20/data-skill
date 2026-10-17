@@ -60,5 +60,16 @@
       "Names auto-suspend and right-sizing as the first levers, before recommending architectural changes",
       "Any $/TiB or $/slot-hour figure cited is date-stamped with an instruction to re-verify against the live pricing page"
     ]
+  },
+  {
+    "id": "rag-corpus-governance-artifact",
+    "prompt": "Our support assistant indexes Google Drive and Confluence. We're switching embedding models next month, and when someone loses access to a folder they can still get answers from it. Fix the corpus pipeline.",
+    "assertions": [
+      "Names the seam first: the governed corpus pipeline is data's, retrieval behavior is ai's, the served vector store is backend's",
+      "Captures each source's ACL at ingest on the incremental sync cursor so every chunk carries who may see it",
+      "Versions parser, chunking and embedding per chunk and treats the embedding swap as a full re-index, not an in-place edit",
+      "Builds the new index version completely before switching queries to it in one atomic step",
+      "Treats revocation as deny-at-query-time against the current ACL first, then purges derived chunks, vectors and caches"
+    ]
   }
 ]
