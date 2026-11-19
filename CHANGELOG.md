@@ -8,6 +8,11 @@ The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, 
 ## [Unreleased]
 
 ### Added
+- Queue unreleased changes here.
+
+## [0.3.0] — 2026-11-19
+
+### Added
 - SKILL.md **Standalone context check** (before routing): the family's common core (look first,
   size it, ask at most four owner-only questions with recommended answers, decide as the expert,
   never block, record in the LEDGER) and five data questions (the decision it drives, sources and
@@ -36,5 +41,6 @@ The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, 
 - Behavioral eval suites: activation, traversal, output, compression-ablation.
 - Research corpora + synthesis in `research/` (4 channels, date-stamped 2026-07-25).
 
+[0.3.0]: https://github.com/gabros20/data-skill/releases/tag/v0.3.0
 [0.2.0]: https://github.com/gabros20/data-skill/releases/tag/v0.2.0
 [0.1.0]: https://github.com/gabros20/data-skill/releases/tag/v0.1.0
