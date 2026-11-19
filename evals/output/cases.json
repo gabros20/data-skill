@@ -71,5 +71,15 @@
       "Builds the new index version completely before switching queries to it in one atomic step",
       "Treats revocation as deny-at-query-time against the current ACL first, then purges derived chunks, vectors and caches"
     ]
+  },
+  {
+    "id": "standalone-context-check",
+    "prompt": "Set up analytics for our SaaS so we can see how the business is doing.",
+    "assertions": [
+      "Before designing anything it reads the repo and any digital-product/LEDGER.md Context, and asks nothing the repo already answers (databases, tracking libraries, existing tools).",
+      "It asks at most four questions in one round (for example which decision the data will drive, where the data lives and who owns it, whether any of it is personal, how fresh it must be), each with a recommended answer — or, if it cannot ask, proceeds and opens the result with the assumptions that would change it most.",
+      "It scopes the first build to the one decision named or assumed, and treats personal data as needing minimum collection and a retention period.",
+      "Answers and assumptions are recorded in the LEDGER's Context block, each assumption with its basis and cost to reverse."
+    ]
   }
 ]

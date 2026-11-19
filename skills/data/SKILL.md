@@ -32,6 +32,33 @@ upstream artifacts exist (contracts, an NFR budget, a threat model, a `handoff.y
 them rather than re-deriving. Recommend adjacent skills when useful; never invoke them
 automatically unless the user explicitly requested a composition workflow.
 
+## Standalone context check
+
+Before producing anything the user will have to live with:
+1. **Look first.** Read `digital-product/LEDGER.md` (Context), `digital-product/<pack>/`, upstream
+   artifacts, the repo and this conversation. A fact found is never asked; a fact recorded is never
+   re-asked.
+2. **Size it.** Reversible and small → proceed, stating assumptions. New, costly or hard to undo →
+   check.
+3. **Ask only what the owner alone knows**, in their words: one round, at most four, highest
+   leverage first, each with a recommended answer ("ok" accepts all). Two rounds at most.
+4. **No or thin answers → decide as the expert.** Record each assumption with its basis and cost to
+   reverse; prefer the reversible option; show the cheapest proof early.
+5. **No way to ask → never block.** Proceed, and open the artifact with the assumptions and the
+   answers that would change it most.
+6. **Write it down.** Answers and assumptions go to the LEDGER's Context block.
+
+This pack's questions:
+1. What decision will this data drive, and who makes it? (Recommended: one decision, one owner;
+   build only what feeds it.)
+2. Where does the data live today — app database, payments, analytics tool, spreadsheets — and who
+   owns each source? (Read the repo first.)
+3. Is any of it personal data, and are there rules on keeping or deleting it? (Recommended: treat
+   it as personal; keep the minimum, with a set retention period.)
+4. How fresh must it be: daily, hourly or live? (Recommended: daily.)
+5. Is there a warehouse or dashboard tool already, and a monthly budget? (Recommended: reuse what
+   exists.)
+
 ## Route before acting
 
 1. Pick the **one primary job** the request needs (most requests are one — name it).
