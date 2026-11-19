@@ -48,7 +48,7 @@ Before producing anything the user will have to live with:
    answers that would change it most.
 6. **Write it down.** Answers and assumptions go to the LEDGER's Context block.
 
-This pack's questions:
+This pack's questions (a pool — ask the top four that step 1 left open):
 1. What decision will this data drive, and who makes it? (Recommended: one decision, one owner;
    build only what feeds it.)
 2. Where does the data live today — app database, payments, analytics tool, spreadsheets — and who
